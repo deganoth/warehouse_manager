@@ -36,6 +36,9 @@
 	    			<div class="card-content">
 	    				<div class="row row-vertical-center no-margin">
 	    					<div class="col s12 m6 l12">
+	    						<canvas id="myChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
+	    					</div>
+	    					<div class="col s12 m6 l12">
 	    						{% for product in products %}
 	    						<ul>
 								    <span class="product_name">{{product.product_name}}</span>
@@ -72,6 +75,7 @@
 	    						{% for category in categories %}
 	    						<ul>
 								    <span class="product_name">{{category.category_name}}</span>
+								    <span class="product_quantity">{{category.product_quantity}}</span>
 							    </ul>
 	    						{% endfor %}
 	    					</div>
@@ -103,7 +107,7 @@
 	    						{% for manufacturer in manufacturers %}
 	    						<ul>
 								    <span class="product_name">{{manufacturer.manufacturer_name}}</span>
-								    <span class="product_quantity">{{manufacturer.manufacturerer_location}}</span>
+								    <span class="product_quantity">{{manufacturer.product_quantity}}</span>
 							    </ul>
 	    						{% endfor %}
 	    					</div>
@@ -113,4 +117,5 @@
 	    		</div>
 	    	</div>
     	</div>
+
 {% endblock %}

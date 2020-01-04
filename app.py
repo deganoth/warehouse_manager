@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_products')
 def get_products():
-    return render_template('dashboard.html', products=mongo.db.products.find(), categories=mongo.db.categories.find(), manufacturers=mongo.db.manufacturers.find())
+    return render_template('dashboard.html', products=mongo.db.products.find(), categories=mongo.db.products.find(), manufacturers=mongo.db.products.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
