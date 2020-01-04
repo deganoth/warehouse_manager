@@ -1,40 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-   
+<div class="card">
+	<div class="card-content">
+	    <div class="nav-wrapper">
+	        <form>
+	            <div class="input-field">
+	                <input id="search" type="search" required placeholder="Find a Product..">
+	                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+	                <i class="material-icons">close</i>
+	            </div>
+	        </form>
+	    </div>    
+	 </div>
+ </div>
     <div class="row equal-height-grid">
-	    <div class="col l4 s12">
-	    		<div class="card">
-	    			<div class="card-toolbar">
-	    				<div class="card-title">
-	    					Manufacturers
-	    				</div>
-	    				<div class="card-toolbar-actions">
-	    					<div class="dropdown-trigger" data-target="products-dropdown">
-	    						<i class="material-icons">more_vert</i>
-	    					</div>
-	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-	    						<li tabindex="0"><a href="#!">Guitars</a></li>
-	    						<li tabindex="0"><a href="#!">Synths</a></li>
-	    					</ul>
-	    				</div>
-	    			</div>
-	    			<div class="card-content">
-	    				<div class="row row-vertical-center no-margin">
-	    					<div class="col s12 m6 l12">
-	    						{% for manufacturer in manufacturers %}
-	    						<ul>
-								    <span class="product_name">{{manufacturer.manufacturer_name}}</span>
-								    <span class="product_quantity">{{manufacturer.manufacturerer_location}}</span>
-							    </ul>
-	    						{% endfor %}
-	    					</div>
-	    					<div class="col s12 m6 l12">
-	    						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-	    					</div>
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
+	    
 	    	<div class="col l4 s12">
 	    		<div class="card">
 	    			<div class="card-toolbar">
@@ -46,8 +26,9 @@
 	    						<i class="material-icons">more_vert</i>
 	    					</div>
 	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-	    						<li tabindex="0"><a href="#!">Guitars</a></li>
-	    						<li tabindex="0"><a href="#!">Synths</a></li>
+	    						<li tabindex="0"><a href="#!">Add new</a></li>
+	    						<li tabindex="0"><a href="#!">Update</a></li>
+	    						<li tabindex="0"><a href="#!">Delete</a></li>
 	    					</ul>
 	    				</div>
 	    			</div>
@@ -79,8 +60,9 @@
 	    						<i class="material-icons">more_vert</i>
 	    					</div>
 	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0">
-	    						<li tabindex="0"><a href="#!">Guitars</a></li>
-	    						<li tabindex="0"><a href="#!">Synths</a></li>
+	    						<li tabindex="0"><a href="#!">Add new</a></li>
+	    						<li tabindex="0"><a href="#!">Update</a></li>
+	    						<li tabindex="0"><a href="#!">Delete</a></li>
 	    					</ul>
 	    				</div>
 	    			</div>
@@ -93,13 +75,42 @@
 							    </ul>
 	    						{% endfor %}
 	    					</div>
-	    					<div class="col s12 m6 l12">
-	    						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-	    					</div>
+	    				
 	    				</div>
 	    			</div>
 	    		</div>
 	    	</div>
-	    	
+	    	<div class="col l4 s12">
+	    		<div class="card">
+	    			<div class="card-toolbar">
+	    				<div class="card-title">
+	    					Manufacturers
+	    				</div>
+	    				<div class="card-toolbar-actions">
+	    					<div class="dropdown-trigger" data-target="products-dropdown">
+	    						<i class="material-icons">more_vert</i>
+	    					</div>
+	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
+	    						<li tabindex="0"><a href="#!">Add new</a></li>
+	    						<li tabindex="0"><a href="#!">Update</a></li>
+	    						<li tabindex="0"><a href="#!">Delete</a></li>
+	    					</ul>
+	    				</div>
+	    			</div>
+	    			<div class="card-content">
+	    				<div class="row row-vertical-center no-margin">
+	    					<div class="col s12 m6 l12">
+	    						{% for manufacturer in manufacturers %}
+	    						<ul>
+								    <span class="product_name">{{manufacturer.manufacturer_name}}</span>
+								    <span class="product_quantity">{{manufacturer.manufacturerer_location}}</span>
+							    </ul>
+	    						{% endfor %}
+	    					</div>
+	    					
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
     	</div>
 {% endblock %}
