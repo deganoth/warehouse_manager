@@ -4,14 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="static/css/style.css" type="text/css" />
 
-    <title>MusicShopper</title>
+    <title>Warehouse|Manager</title>
 </head>
 <body>
-   <h1>Outside!</h1>
-   {% block content %}
-   {% endblock %}
+    <header>
+        <div class="row">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo center">Warehouse Manager</a>
+                    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+        <ul id="slide-out" class="sidenav">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+        </ul>
+    </header>
+    <div class="container">
+        <h1>Dashboard</h1>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.sidenav').sidenav();
+            $('.collapsible').collapsible();
+            $('.dropdown-trigger').dropdown();
+        });
+        
+    </script>
 </body>
 </html>
