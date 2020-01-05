@@ -16,21 +16,24 @@
         <div class="row">
             <nav>
                 <div class="nav-wrapper">
-                    
                     <a href="#!" class="brand-logo center">Warehouse Manager<i class="material-icons" style="font-size: 40px">store_mall_directory</i></a>
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="slide-out" class="sidenav">
+                        <li><a href="{{url_for('get_dashboard')}}">Dashboard</a></li>
+                        <li><a href="{{url_for('get_products')}}">Product history</a></li>
+                        <li><a href="collapsible.html">Log Out</a></li>
+                    </ul>
                 </div>
             </nav>
         </div>
         <ul id="slide-out" class="sidenav">
-            <li><a href="sass.html">Export report</a></li>
-            <li><a href="badges.html">Product history</a></li>
+            <li><a href="{{url_for('get_dashboard')}}">Export report</a></li>
+            <li><a href="{{url_for('get_products')}}">Product history</a></li>
             <li><a href="collapsible.html">Log Out</a></li>
         </ul>
     </header>
 
     <div class="container">
-        <h1>Dashboard</h1>
         {% block content %}
         {% endblock %}
     </div>

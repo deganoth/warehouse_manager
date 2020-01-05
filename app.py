@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -11,9 +11,19 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:Ornagy13@myfirstcluster-vsdxp.mong
 mongo = PyMongo(app)
 
 @app.route('/')
-@app.route('/get_products')
+
+@app.route('/get_dashboard/')
+def get_dashboard():
+    return render_template('dashboard.html', 
+    	products=mongo.db.products.find(), 
+    	# filter category to filter unique id's
+    	categories=mongo.db.products.find(), 
+    	manufacturers=mongo.db.products.find()
+    	)
+
+@app.route('/get_products/')
 def get_products():
-    return render_template('dashboard.html', products=mongo.db.products.find(), categories=mongo.db.products.find(), manufacturers=mongo.db.products.find())
+	return render_template('products.html', products=mongo.db.products.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
