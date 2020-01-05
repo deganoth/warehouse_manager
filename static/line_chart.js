@@ -36,4 +36,3 @@ var ctx = document.getElementById('lineChart').getContext('2d');
                 }
             }
         });
- 

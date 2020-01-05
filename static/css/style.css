@@ -9,6 +9,11 @@
 	float: right;
 }
 
+.table_overflow{
+	overflow-y:auto;
+	overflow-x:auto;
+}
+
 @media only screen and (min-width: 993px) {
  nav a.sidenav-trigger {
   display:inline;

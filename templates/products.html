@@ -14,7 +14,7 @@
 	 </div>
  </div>
     <div class="row equal-height-grid">
-	    	<div class="col l4 s12">
+	    	<div class="col s12">
 	    		<div class="card">
 	    			<div class="card-toolbar">
 	    				<div class="card-title">
@@ -31,96 +31,40 @@
 	    					</ul>
 	    				</div>
 	    			</div>
-	    		
-	    			<div class="card-content">
-	    				<div class="row row-vertical-center no-margin">
-	    					<div class="col s12 m6 l12">
-	    						<canvas id="barChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
-	    					</div>
-	    					<div class="col s12 m6 l12">
-	    						{% for product in products %}
-	    						<ul>
-								    <span class="product_name">{{product.product_name}}</span>
-								    <span class="product_quantity">{{product.product_quantity}}</span>
-							    </ul>
-							    {% endfor %}
-	    					</div>
-	    					
-	    				</div>
-	    			</div>
-	    			
+	    			<div class="table_overflow">
+		    			<table class="striped centered">
+						   <thead>
+						      <tr>
+						         <th>Name</th>
+					              <th>Desciption</th>
+					              <th>Manufacturer</th>
+					              <th>Supplier</th>
+					              <th>Category</th>
+					              <th>Price</th>
+					              <th>Quantity</th>
+					              <th>Status</th>
+					              <th>EAN</th>
+						      </tr>
+						   </thead>
+						   <tbody>
+						   	{% for product in products %}
+						      <tr>
+						        <td>{{product.product_name}}</td>
+					            <td>{{product.product_description}}</td>
+					            <td>{{product.manufacturer_name}}</td>
+					            <td>{{product.supplier_name}}</td>
+					            <td>{{product.category_name}}</td>
+					            <td>{{product.product_price}}</td>
+					            <td>{{product.product_quantity}}</td>
+					            <td>{{product.product_status}}</td>
+					            <td>{{product.product_EAN}}</td>	
+						      </tr>
+
+					        {% endfor %}
+					      </table>
+	    			</div>	
 	    		</div>
 	    	</div>
-	    	<div class="col l4 s12">
-	    		<div class="card">
-	    			<div class="card-toolbar">
-	    				<div class="card-title">
-	    					Categories
-	    				</div>
-	    				<div class="card-toolbar-actions">
-	    					<div class="dropdown-trigger" data-target="products-dropdown">
-	    						<i class="material-icons">more_vert</i>
-	    					</div>
-	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0">
-	    						<li tabindex="0"><a href="#!">Add new</a></li>
-	    						<li tabindex="0"><a href="#!">Update</a></li>
-	    						<li tabindex="0"><a href="#!">Delete</a></li>
-	    					</ul>
-	    				</div>
-	    			</div>
-	    			<div class="card-content">
-	    				<div class="row row-vertical-center no-margin">
-	    					<div class="col s12 m6 l12">
-	    						<canvas id="pieChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
-	    					</div>
-	    					<div class="col s12 m6 l12">
-	    						{% for category in categories %}
-	    						<ul>
-								    <span class="product_name">{{category.category_name}}</span>
-								    <span class="product_quantity">{{category.product_quantity}}</span>
-							    </ul>
-	    						{% endfor %}
-	    					</div>
-	    				
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
-	    	<div class="col l4 s12">
-	    		<div class="card">
-	    			<div class="card-toolbar">
-	    				<div class="card-title">
-	    					Manufacturers
-	    				</div>
-	    				<div class="card-toolbar-actions">
-	    					<div class="dropdown-trigger" data-target="products-dropdown">
-	    						<i class="material-icons">more_vert</i>
-	    					</div>
-	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-	    						<li tabindex="0"><a href="#!">Add new</a></li>
-	    						<li tabindex="0"><a href="#!">Update</a></li>
-	    						<li tabindex="0"><a href="#!">Delete</a></li>
-	    					</ul>
-	    				</div>
-	    			</div>
-	    			<div class="card-content">
-	    				<div class="row row-vertical-center no-margin">
-	    					<div class="col s12 m6 l12">
-	    						<canvas id="lineChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
-	    					</div>
-	    					<div class="col s12 m6 l12">
-	    						{% for manufacturer in manufacturers %}
-	    						<ul>
-								    <span class="product_name">{{manufacturer.manufacturer_name}}</span>
-								    <span class="product_quantity">{{manufacturer.product_quantity}}</span>
-							    </ul>
-	    						{% endfor %}
-	    					</div>
-	    					
-	    				</div>
-	    			</div>
-	    		</div>
-	    	</div>
-    	</div>
-   
 {% endblock %}
+
+
