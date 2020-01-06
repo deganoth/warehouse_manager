@@ -29,7 +29,9 @@ def get_products():
 @app.route('/add_product')
 def add_product():
 	return render_template('addproduct.html', 
-		products=mongo.db.products.find(), 
+		manufacturers=mongo.db.manufacturers.find(), 
+		categories=mongo.db.categories.find(),
+		suppliers=mongo.db.suppliers.find()
     	)
 
 if __name__ == '__main__':
