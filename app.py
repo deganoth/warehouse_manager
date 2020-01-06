@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, url_for, json
+from flask import Flask, render_template, redirect, request, url_for, json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -10,9 +10,9 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:Ornagy13@myfirstcluster-vsdxp.mong
 
 mongo = PyMongo(app)
 
-#@app.route('/')
-
 @app.route('/')
+
+@app.route('/get_dashboard')
 def get_dashboard():
     return render_template('dashboard.html', 
     	products=mongo.db.products.find(), 
@@ -33,6 +33,12 @@ def add_product():
 		categories=mongo.db.categories.find(),
 		suppliers=mongo.db.suppliers.find()
     	)
+
+@app.route('/insert_product', methods=['POST'])
+def insert_product():
+	products = mongo.db.products
+	products.insert_one(request.form.to_dict())
+	return redirect(url_for('get_products'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
