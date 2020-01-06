@@ -3,69 +3,75 @@
 <center><h4><i class="material-icons prefix" style="font-size: 2.1rem">assignment</i> Products</h4></center>
 <div class="card">
 	<div class="card-content">
-	    <div class="nav-wrapper">
-	        <form>
-	            <div class="input-field">
-	                <input id="search" type="search" required placeholder="Find a Product..">
-	                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-	                <i class="material-icons">close</i>
-	            </div>
-	        </form>
-	    </div>    
-	 </div>
- </div>
-    <div class="row equal-height-grid">
-	    	<div class="col s12">
-	    		<div class="card">
-	    			<div class="card-toolbar">
-	    				<div class="card-title">
-	    					Products
-	    				</div>
-	    				<div class="card-toolbar-actions">
-	    					<div class="dropdown-trigger" data-target="products-dropdown">
-	    						<i class="material-icons">more_vert</i>
-	    					</div>
-	    					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-	    						<li tabindex="0"><a href="#!">Add new</a></li>
-	    						<li tabindex="0"><a href="#!">Update</a></li>
-	    						<li tabindex="0"><a href="#!">Delete</a></li>
-	    					</ul>
-	    				</div>
-	    			</div>
-	    			<div class="table_overflow">
-		    			<table class="striped">
-						   <thead>
-						      <tr>
-						         <th>Name</th>
-					              <th>Desciption</th>
-					              <th>Manufacturer</th>
-					              <th>Supplier</th>
-					              <th>Category</th>
-					              <th>Price</th>
-					              <th>Quantity</th>
-					              <th>Status</th>
-					              <th>EAN</th>
-						      </tr>
-						   </thead>
-						   <tbody>
-						   	{% for product in products %}
-						      <tr>
-						        <td>{{product.product_name}}</td>
-					            <td>{{product.product_description}}</td>
-					            <td>{{product.manufacturer_name}}</td>
-					            <td>{{product.supplier_name}}</td>
-					            <td>{{product.category_name}}</td>
-					            <td>€{{product.product_price}}</td>
-					            <td>{{product.product_quantity}}</td>
-					            <td>{{product.product_status}}</td>
-					            <td>{{product.product_EAN}}</td>	
-						      </tr>
+		<div class="nav-wrapper">
+			<form>
+				<div class="input-field">
+					<input id="search" type="search" required placeholder="Find a Product..">
+					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+					<i class="material-icons">close</i>
+				</div>
+			</form>
+		</div>    
+	</div>
+</div>
+<div class="row equal-height-grid">
+	<div class="col s12">
+		<div class="card">
+			<div class="card-toolbar">
+				<div class="card-title">
+					Products
+				</div>
+				<div class="card-toolbar-actions">
+					<div class="dropdown-trigger" data-target="products-dropdown">
+						<i class="material-icons">more_vert</i>
+					</div>
+					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
+						<li tabindex="0"><a href="{{url_for('add_product')}}">Add new</a></li>
+						<li tabindex="0"><a href="#!">Update</a></li>
+						<li tabindex="0"><a href="#!">Delete</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="table_overflow">
+				<table class="striped">
+					<thead>
+						<tr>
+							<!--empty cell for structural purposes-->
+							<th></th>
+							<th>Name</th>
+							<th>Desciption</th>
+							<th>Manufacturer</th>
+							<th>Supplier</th>
+							<th>Category</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Status</th>
+							<th>EAN</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for product in products %}
+						<tr>
+							<td>
+								<a href="{{url_for('edit_product', product_id=product._id)}}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">edit</i></a>
+										
+							</td>
+							<td>{{product.product_name}}</td>
+							<td>{{product.product_description}}</td>
+							<td>{{product.manufacturer_name}}</td>
+							<td>{{product.supplier_name}}</td>
+							<td>{{product.category_name}}</td>
+							<td>€{{product.product_price}}</td>
+							<td>{{product.product_quantity}}</td>
+							<td>{{product.product_status}}</td>
+							<td>{{product.product_EAN}}</td>	
+						</tr>
 
-					        {% endfor %}
-					      </table>
-	    			</div>	
-	    		</div>
-	    	</div>
-{% endblock %}
+						{% endfor %}
+					</table>
+				</div>	
+			</div>
+		</div>
+		{% endblock %}
 
 
