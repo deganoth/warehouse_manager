@@ -26,9 +26,9 @@ def get_products():
 		products=mongo.db.products.find(), 
     	)
 
-@app.route('/get_test')
-def get_test():
-	return render_template('test.html', 
+@app.route('/add_product')
+def add_product():
+	return render_template('addproduct.html', 
 		products=mongo.db.products.find(), 
     	)
 
