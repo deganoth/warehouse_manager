@@ -1,13 +1,13 @@
 #nav-icon-visible{
- 	font-size: 2.1rem;
- 	display:normal;
- }
+	font-size: 2.1rem;
+	display:normal;
+}
 
 .card .card-toolbar {
- display:flex;
- padding:24px;
- justify-content:space-between;
- 
+	display:flex;
+	padding:24px;
+	justify-content:space-between;
+
 }
 
 .card .product_quantity{
@@ -20,19 +20,27 @@
 }
 
 .btn {
-	float:right;
+	float:left;
+	margin-top: 70px;
+	width: 100%;
 }
 
 
 
 @media only screen and (min-width: 993px) {
- nav a.sidenav-trigger {
-  display:inline;
- }
+	nav a.sidenav-trigger {
+		display:inline;
+	}
+	.btn {
+		float:right;
+		margin-top: 0;
+		width:50%;
+	}
 }
 
 @media only screen and (max-width: 379px){
-  #nav-icon-visible{
- 	display: none;
- }
+	#nav-icon-visible{
+		display: none;
+	}
+	
 }
