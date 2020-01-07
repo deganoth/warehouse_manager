@@ -2,17 +2,7 @@
 {% block content %}
 <center><h4><i class="material-icons prefix" style="font-size: 2.1rem">poll</i> Categories</h4></center>
 <div class="card">
-	<div class="card-content">
-		<div class="nav-wrapper">
-			<form>
-				<div class="input-field">
-					<input id="search" type="search" required placeholder="Find a Product..">
-					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-					<i class="material-icons">close</i>
-				</div>
-			</form>
-		</div>    
-	</div>
+	
 </div>
 <div class="row equal-height-grid">
 	<div class="col s12">
@@ -43,6 +33,7 @@
 					</thead>
 					<tbody>
 						{% for cat in categories %}
+						
 						<tr>
 							<td>{{cat.category_name}}</td>
 							
