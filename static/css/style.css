@@ -22,8 +22,11 @@
 
 .btn {
 	float:left;
-	margin-top: 70px;
 	width: 100%;
+}
+
+#bottom-switch{
+	padding-bottom: 70px;
 }
 
 #table-main {
@@ -64,7 +67,6 @@
 	.btn {
 		float:right;
 		margin-top: 0;
-		
 	}
 }
 
