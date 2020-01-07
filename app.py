@@ -25,7 +25,7 @@ def get_dashboard():
 @app.route('/get_products')
 def get_products():
 	return render_template('products.html', 
-		products=mongo.db.products.find(), 
+		products=mongo.db.products.find()
     	)
 
 # Make use of the data required from mongo to create dropdown menues for use in creating a new product
@@ -56,6 +56,39 @@ def edit_product(product_id):
 		manufacturers=all_manufacturers, 
 		categories=all_categories,
 		suppliers=all_suppliers)
+
+@app.route('/update_product/<product_id>', methods=["POST"])
+def update_product(product_id):
+    products = mongo.db.products
+    products.update( {'_id': ObjectId(product_id)},
+    {
+        'product_name':request.form.get('product_name'),
+        'product_description':request.form.get('product_description'),
+        'manufacturer_name': request.form.get('manufacturer_name'),
+        'supplier_name': request.form.get('supplier_name'),
+        'category_name':request.form.get('category_name'),
+        'product_price':request.form.get('product_price'),
+        'product_quantity':request.form.get('product_quantity'),
+        'product_status':request.form.get('product_status'),
+        'product_EAN':request.form.get('product_EAN')
+    })
+    return redirect(url_for('get_products'))
+
+@app.route('/delete_product/<product_id>')
+def delete_product(product_id):
+	mongo.db.products.remove({'_id': ObjectId(product_id)})
+	return redirect(url_for('get_products'))
+
+@app.route('/get_categories')
+def get_categories():
+	return render_template('categories.html',
+		categories=mongo.db.categories.find())
+
+@app.route('/add_category')
+def add_category():
+	return render_template('addcategory.html',
+		categories=mongo.db.categories.find(),
+		)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), 
