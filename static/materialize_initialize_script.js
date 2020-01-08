@@ -3,5 +3,6 @@ $(document).ready(function() {
             $('.collapsible').collapsible();
             $('.dropdown-trigger').dropdown();
             $('select').formSelect();
+            $('.modal').modal();
         });
 

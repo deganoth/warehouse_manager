@@ -27,7 +27,7 @@ def get_products():
 	return render_template('products.html', 
 		products=mongo.db.products.find()
     	)
-
+	
 # Make use of the data required from mongo to create dropdown menues for use in creating a new product
 @app.route('/add_product')
 def add_product():
