@@ -16,6 +16,12 @@ mongo = PyMongo(app)
 @app.route('/get_dashboard')
 def get_dashboard():
     return render_template('dashboard.html', 
+    	bar_name="Products",
+    	bar_quantity=mongo.db.products.find(),
+    	bar_product=mongo.db.products.find(),
+    	pie_name="Categories",
+    	pie_quantity=mongo.db.products.find(),
+    	pie_category=mongo.db.products.find(),
     	products=mongo.db.products.find(), 
         categories=mongo.db.products.find(), 
     	manufacturers=mongo.db.products.find()

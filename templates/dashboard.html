@@ -16,7 +16,7 @@
 </div>
 
 <div class="row equal-height-grid">
-	<div class="col l4 s12">
+	<div class="col l6 s12">
 		<div class="card">
 			<div class="card-toolbar">
 				<div><a href="{{url_for('get_products')}}" class="card-title">Products</a></div>
@@ -34,9 +34,11 @@
 
 			<div class="card-content">
 				<div class="row row-vertical-center no-margin">
+					
 					<div class="col s12 m6 l12">
 						<canvas id="barChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
+
 					<div class="col s12 m6 l12">
 						{% for product in products %}
 						<ul>
@@ -45,13 +47,13 @@
 						</ul>
 						{% endfor %}
 					</div>
-
+					
 				</div>
 			</div>
 
 		</div>
 	</div>
-	<div class="col l4 s12">
+	<div class="col l6 s12">
 		<div class="card">
 			<div class="card-toolbar">
 				<div><a href="{{url_for('get_categories')}}" class="card-title">Categories</a></div>
@@ -69,7 +71,7 @@
 			<div class="card-content">
 				<div class="row row-vertical-center no-margin">
 					<div class="col s12 m6 l12">
-						<canvas id="pieChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
+						<canvas id="doughnutChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
 					<div class="col s12 m6 l12">
 						{% for category in categories %}
@@ -85,44 +87,93 @@
 			</div>
 		</div>
 	</div>
-	<div class="col l4 s12">
-		<div class="card">
-			<div class="card-toolbar">
-				<div class="card-title">
-					Manufacturers
-				</div>
-				<div class="card-toolbar-actions">
-					<div class="dropdown-trigger" data-target="products-dropdown">
-						<i class="material-icons">more_vert</i>
-					</div>
-					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-						<li tabindex="0"><a href="#!">Add new</a></li>
-						<li tabindex="0"><a href="#!">Update</a></li>
-						<li tabindex="0"><a href="#!">Delete</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="card-content">
-				<div class="row row-vertical-center no-margin">
-					<div class="col s12 m6 l12">
-						<canvas id="lineChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
-					</div>
-					<div class="col s12 m6 l12">
-						{% for manufacturer in manufacturers %}
-						<ul>
-							<span class="product_name">{{manufacturer.manufacturer_name}}</span>
-							<span class="product_quantity">{{manufacturer.product_quantity}}</span>
-						</ul>
-						{% endfor %}
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-<script type="text/javascript" src="static/bar_chart.js"></script>
-<script type="text/javascript" src="static/pie_chart.js"></script>
+
+<!--Inline javascript charts. required for using jinja template shorthand-->
+
+<script>
+	var ctx = document.getElementById('barChart').getContext('2d');
+	var barChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [{% for product in bar_product %}
+			"{{product.product_name}}",
+			{% endfor %}],
+			datasets: [{
+				label: '{{bar_name}}',
+				data: [{% for product in bar_quantity %}
+				"{{product.product_quantity}}",
+				{% endfor %}],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+				],
+				borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+			animation: {
+				animateScale: true,
+				animateRotate: true
+			}
+		}
+	});
+</script>
+<script>
+	var ctx = document.getElementById('doughnutChart').getContext('2d');
+	var pieChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: [{% for category in pie_category %}
+			"{{category.category_name}}",
+			{% endfor %}],
+			datasets: [{
+				label: '{{pie_name}}',
+				data: [{% for quantity in pie_quantity %}
+				"{{quantity.product_quantity}}",
+				{% endfor %}],
+				backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+				],
+				borderColor: [
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			responsive: true,
+			animation: {
+				animateScale: true,
+				animateRotate: true
+			}
+		}
+	});
+</script>
 <script type="text/javascript" src="static/line_chart.js"></script>
 {% endblock %}
