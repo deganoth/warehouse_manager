@@ -37,19 +37,33 @@ def get_products():
 # search the products collection for matching products based on the product name description, manufacturer
 @app.route('/search_products', methods=['POST'])
 def search_products():
-	search_input = request.form['search_input']
+	search_input = request.form['input_search']
 	search_text = {
 		"$or": [
 			{"product_name": {'$regex': search_input, '$options':'i'}},
 			{"product_description": {'$regex': search_input, '$options':'i'}},
-			{"manufacturer_name": {'$regex': search_input, '$options':'i'}}
+			{"manufacturer_name": {'$regex': search_input, '$options':'i'}},
+			{"supplier_name": {'$regex': search_input, '$options':'i'}},
+			{"category_name": {'$regex': search_input, '$options':'i'}},
+			{"product_status": {'$regex': search_input, '$options':'i'}},
+			{"product_EAN": {'$regex': search_input, '$options':'i'}},
 		]
 	}
 	results = mongo.db.products.find(search_text)
-	return render_template('searchresults.html', 
-		search_text=search_text, 
-		results=results
+	has_results = results.count()
+
+# determines wether the search has any values by taking the counted result and tesing it's value against 0
+	if has_results != 0:
+		return render_template('searchresults.html', 
+			search_text=search_input, 
+			results=results
 		)
+	else:
+		return redirect(url_for('search_empty'))
+
+@app.route('/search_empty')
+def search_empty():
+	return render_template('searchnull.html')
 
 # Make use of the data required from mongo to create dropdown menues for use in creating a new product
 @app.route('/add_product')
@@ -98,7 +112,7 @@ def update_product(product_id):
 		})
 	return redirect(url_for('get_products'))
 
-@app.route('/delete_product/<product_id>')
+@app.route('/delete_product/<product_id>', methods=["POST"])
 def delete_product(product_id):
 	mongo.db.products.remove({'_id': ObjectId(product_id)})
 	return redirect(url_for('get_products')

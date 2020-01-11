@@ -29,6 +29,10 @@
 		padding-bottom: 70px;
 	}
 
+	#button_padding{
+		margin-bottom:0;
+	}
+
 	#modal-button{
 		float:none;
 		width:100%;

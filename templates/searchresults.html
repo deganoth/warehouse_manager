@@ -23,7 +23,7 @@
 						<div class="nav-wrapper">
 							<form action="{{url_for('search_products')}}" method="POST">
 								<div class="input-field">
-									<input id="search" type="search" required placeholder="Find a Product..">
+									<input id="search" type="search" name="input_search" required placeholder="Find a Product..">
 									<label class="label-icon" for="search"><i class="material-icons">search</i></label>
 									<i class="material-icons">close</i>
 								</div>
@@ -44,6 +44,7 @@
 							<thead>
 								<tr>
 									<!--empty cell for structural purposes-->
+									<th>Options</th>
 									<th>Name</th>
 									<th>Desciption</th>
 									<th>Manufacturer</th>
@@ -55,29 +56,30 @@
 									<th>EAN</th>
 								</tr>
 							</thead>
-							{% for object in results %}
+							{% for product in results %}
 							<tbody>
 								<tr>
-									<tr>
-										
-									</tr>
-									<td>{{object.product_name}}</td>
-									<td>{{object.product_description}}</td>
-									<td>{{object.manufacturer_name}}</td>
-									<td>{{object.supplier_name}}</td>
-									<td>{{object.category_name}}</td>
-									<td>€{{object.product_price}}</td>
-									<td>{{object.product_quantity}}</td>
-									<td>{{object.product_status}}</td>
-									<td>{{object.product_EAN}}</td>
+									<td>
+										<a class="btn-floating btn-medium waves-effect waves-light modal-trigger amber" href="{{url_for('edit_product', product_id=product._id)}}"><i class="material-icons right">edit</i></a>
+									</td>
+									<td>{{product.product_name}}</td>
+									<td>{{product.product_description}}</td>
+									<td>{{product.manufacturer_name}}</td>
+									<td>{{product.supplier_name}}</td>
+									<td>{{product.category_name}}</td>
+									<td>€{{product.product_price}}</td>
+									<td>{{product.product_quantity}}</td>
+									<td>{{product.product_status}}</td>
+									<td>{{product.product_EAN}}</td>
 								</tr>
+							</tbody>	
 							{% endfor %}
-							</table>
-						</div>	
-					</div>
+						</table>
+					</div>	
 				</div>
+			</div>
 
-				{% endblock %}
+			{% endblock %}
 
 
 
