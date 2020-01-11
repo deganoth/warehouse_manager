@@ -37,16 +37,19 @@ def get_products():
 # search the products collection for matching products based on the product name description, manufacturer
 @app.route('/search_products', methods=['POST'])
 def search_products():
-	search_text_input = request.args['search_text']
-	search_text = {'$regex': re.compile('.*{}.*'.format(search_text_input)), '$options':'i'}
-	results = mongo.db.products.find({
-		'$or': [
-		{'product_name': query},
-		{'product_description': query},
-		{'manufacturer_name': query},
+	search_input = request.form['search_input']
+	search_text = {
+		"$or": [
+			{"product_name": {'$regex': search_input, '$options':'i'}},
+			{"product_description": {'$regex': search_input, '$options':'i'}},
+			{"manufacturer_name": {'$regex': search_input, '$options':'i'}}
 		]
-		})
-	return render_template('searchresults.html', search_text=search_text_input, results=results)
+	}
+	results = mongo.db.products.find(search_text)
+	return render_template('searchresults.html', 
+		search_text=search_text, 
+		results=results
+		)
 
 # Make use of the data required from mongo to create dropdown menues for use in creating a new product
 @app.route('/add_product')
