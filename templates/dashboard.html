@@ -38,14 +38,9 @@
 					<div class="col s12 m6 l12">
 						<canvas id="pieChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
-					<div id="pie-legend"></div>
+					
 					<div class="col s12 m6 l12">
-						{% for product in products %}
-						<ul>
-							<span class="product_name">{{product.product_name}}</span>
-							<span class="product_quantity">{{product.product_quantity}}</span>
-						</ul>
-						{% endfor %}
+						<div id="pie-legend"></div>
 					</div>
 					
 				</div>
@@ -61,6 +56,7 @@
 					<div class="dropdown-trigger" data-target="products-dropdown">
 						<i class="material-icons">more_vert</i>
 					</div>
+					
 					<ul id="products-dropdown" class="dropdown-content" tabindex="0">
 						<li tabindex="0"><a href="#!">Add new</a></li>
 						<li tabindex="0"><a href="#!">Update</a></li>
@@ -73,16 +69,13 @@
 					<div class="col s12 m6 l12">
 						<canvas id="doughnutChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
+
+					
 					<div class="col s12 m6 l12">
-						{% for category in categories %}
-
-						<ul>
-							<span class="product_name">{{category.category_name}}</span>
-							<span class="product_quantity">{{category.product_quantity}}</span>
-						</ul>
-						{% endfor %}
+						<div id="doughnut-legend">
+						
+						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -127,32 +120,33 @@
 		},
 		options: {
 			responsive: true,
-			animation: {
-				animateScale: true,
-				animateRotate: true
-			},
 			legend: {
 				display: false
-			}
-		
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<div class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+					text.push('<ul><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					if (chart.data.labels[i]) {
+						text.push(chart.data.labels[i]);
+					}
+					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
+				}
+
+				text.push('</div>');
+				return text.join("");
+			},
+
 		}
 
 	});
 	document.getElementById('pie-legend').innerHTML = pieChart.generateLegend();
-	$('pie-legend').click(function(e){
-		var targetLi = $(e.target).closest('li');
-		targetLi.toggleClass('inactive');
-		if(targetLi.hasClass('inactive')){
-			pieChart.getDatasetMeta(targetLi.index()).hidden=true;
-		}else{
-			pieChart.getDatasetMeta(targetLi.index()).hidden=false;
-		}
-		pieChart.update();
-	});
+
 </script>
 <script>
 	var ctx = document.getElementById('doughnutChart').getContext('2d');
-	var pieChart = new Chart(ctx, {
+	var doughnutChart = new Chart(ctx, {
 		type: 'doughnut',
 		data: {
 			labels: [{% for category in pie_category %}
@@ -179,7 +173,10 @@
 				'rgba(153, 102, 255, 1)',
 				'rgba(255, 159, 64, 1)'
 				],
-				borderWidth: 1
+				borderWidth: 1,
+				pointStyle: 'rectRot',
+				pointRadius: 5,
+				pointBorderColor: 'rgb(0,0,0)'
 			}]
 		},
 		options: {
@@ -189,13 +186,25 @@
 				animateRotate: true
 			},
 			legend: {
-				display: true,
-				labels: {
-					fontColor: 'rgb(255, 99, 132)'
+				display: false	
+			},
+			legendCallback: function(chart) {
+				var text = [];
+				text.push('<div class="' + chart.id + '-legend">');
+				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
+					text.push('<ul><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					if (chart.data.labels[i]) {
+						text.push(chart.data.labels[i]);
+					}
+					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
-			}
+
+				text.push('</div>');
+				return text.join("");
+			},
+			
 		}
 	});
+	document.getElementById('doughnut-legend').innerHTML = doughnutChart.generateLegend();
 </script>
-<script type="text/javascript" src="static/line_chart.js"></script>
 {% endblock %}
