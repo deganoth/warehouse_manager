@@ -1,73 +1,93 @@
 
-	#nav-icon-visible{
-		font-size: 2.1rem;
-		display:normal;
-	}
+#nav-icon-visible{
+	font-size: 2.1rem;
+	display:normal;
+}
 
-	.card .card-toolbar {
-		display:flex;
-		padding:24px;
-		justify-content:space-between;
+.card .card-toolbar {
+	display:flex;
+	padding:24px;
+	justify-content:space-between;
 
-	}
+}
 
-	.card .product_quantity{
-		float: right;
-	}
+.card .product_quantity{
+	float: right;
+}
 
+
+.table_overflow{
+	overflow-y:auto;
+	overflow-x:auto;
+}
+
+.btn {
+	float:left;
+	width: 100%;
+}
+
+.legend-button{
+	padding: 6px 6px; 
+	border-radius:13px; 
+}
+
+#bottom-switch{
+	padding-bottom: 70px;
+}
+
+#button_padding{
+	margin-bottom:0;
+}
+
+#modal-button{
+	float:none;
+	width:100%;
+	margin-bottom: 15px;
+}
+
+#add-product-button{
+	float:none;
+}
+
+#add-product-card{
+	padding:8.5px 0;
+}
+
+span:active{
+	text-decoration: line-through;
+	cursor: pointer;
+}
+
+ul#legend-item span:link, ul#legend-item span:visited{
+	text-decoration: line-through;
+	cursor: pointer;
+}
+
+ul#legend-item span:hover, ul#legend-item span:active{
 	
-	.table_overflow{
-		overflow-y:auto;
-		overflow-x:auto;
-	}
+	cursor: pointer;
+}
 
+@media only screen and (min-width: 993px) {
+	nav a.sidenav-trigger {
+		display:inline;
+	}
 	.btn {
-		float:left;
-		width: 100%;
+		float:right;
+		margin-top: 0;
 	}
+}
 
-	#bottom-switch{
-		padding-bottom: 70px;
-	}
-
-	#button_padding{
-		margin-bottom:0;
-	}
-
+@media only screen and (min-width: 1570px) {
 	#modal-button{
 		float:none;
-		width:100%;
-		margin-bottom: 15px;
+		width:33%;
+	}
+}
+
+@media only screen and (max-width: 379px){
+	#nav-icon-visible{
+		display: none;
 	}
 
-	#add-product-button{
-		float:none;
-	}
-
-	#add-product-card{
-		padding:8.5px 0;
-	}
-
-	@media only screen and (min-width: 993px) {
-		nav a.sidenav-trigger {
-			display:inline;
-		}
-		.btn {
-			float:right;
-			margin-top: 0;
-		}
-	}
-
-	@media only screen and (min-width: 1570px) {
-		#modal-button{
-			float:none;
-			width:33%;
-		}
-	}
-
-	@media only screen and (max-width: 379px){
-		#nav-icon-visible{
-			display: none;
-		}
-		
-	}
+}

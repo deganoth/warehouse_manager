@@ -38,7 +38,7 @@
 					<div class="col s12 m6 l12">
 						<canvas id="pieChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
-					
+
 					<div class="col s12 m6 l12">
 						<div id="pie-legend"></div>
 					</div>
@@ -73,7 +73,7 @@
 					
 					<div class="col s12 m6 l12">
 						<div id="doughnut-legend">
-						
+
 						</div>
 					</div>
 				</div>
@@ -85,7 +85,36 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 <!--Inline javascript charts. required for using jinja template shorthand-->
+<script>
+	
+	/* custom legend onclick function for use with <ul> elemnents */
 
+	function legendClickCallback(event){
+		event = event || window.event;
+
+		var target = event.target || event.srcElement;
+		while(target.nodeName !== 'UL'){
+			target = target.parentElement;
+		}
+		var parent = target.parentElement;
+		var chartId = parseInt(parent.classList[0].split("-")[0], 10);
+		var chart = Chart.instances[chartId];
+		var index = Array.prototype.slice.call(parent.children).indexOf(target);
+
+		chart.legend.options.onClick.call(chart, event, chart.legend.legendItems[index]);
+		if(chart.isDatasetVisible(index)){
+			target.classList.remove('hidden');
+		}else{
+			target.classList.add('hidden');
+		}
+	}
+
+
+</script>
+<script>
+	
+	
+</script>
 <script>
 	var ctx = document.getElementById('pieChart').getContext('2d');
 	var pieChart = new Chart(ctx, {
@@ -127,12 +156,13 @@
 				var text = [];
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-					text.push('<ul><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					text.push('<ul id="legend-item"><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
 						text.push(chart.data.labels[i]);
 					}
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
+
 
 				text.push('</div>');
 				return text.join("");
@@ -141,7 +171,16 @@
 		}
 
 	});
-	document.getElementById('pie-legend').innerHTML = pieChart.generateLegend();
+
+
+	var myLegendContainer = document.getElementById("pie-legend");
+
+	myLegendContainer.innerHTML = pieChart.generateLegend();
+
+	var legendItems = myLegendContainer.getElementsByTagName('ul');
+	for (var i = 0; i < legendItems.length; i += 1) {
+		legendItems[i].addEventListener("click", legendClickCallback, true);
+	}
 
 </script>
 <script>
@@ -186,13 +225,13 @@
 				animateRotate: true
 			},
 			legend: {
-				display: false	
+				display: false,
 			},
 			legendCallback: function(chart) {
 				var text = [];
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-					text.push('<ul><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					text.push('<ul id="legend-item"><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
 						text.push(chart.data.labels[i]);
 					}
@@ -205,6 +244,14 @@
 			
 		}
 	});
-	document.getElementById('doughnut-legend').innerHTML = doughnutChart.generateLegend();
+	
+	var myLegendContainer = document.getElementById("doughnut-legend");
+
+	myLegendContainer.innerHTML = doughnutChart.generateLegend();
+
+	var legendItems = myLegendContainer.getElementsByTagName('ul');
+	for (var i = 0; i < legendItems.length; i += 1) {
+		legendItems[i].addEventListener("click", legendClickCallback, true);
+	}
 </script>
 {% endblock %}
