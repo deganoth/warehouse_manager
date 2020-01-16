@@ -38,17 +38,21 @@ def get_products():
 @app.route('/search_products', methods=['POST'])
 def search_products():
 	search_input = request.form['input_search']
-	search_text = {
-		"$or": [
-			{"product_name": {'$regex': search_input, '$options':'i'}},
-			{"product_description": {'$regex': search_input, '$options':'i'}},
-			{"manufacturer_name": {'$regex': search_input, '$options':'i'}},
-			{"supplier_name": {'$regex': search_input, '$options':'i'}},
-			{"category_name": {'$regex': search_input, '$options':'i'}},
-			{"product_status": {'$regex': search_input, '$options':'i'}},
-			{"product_EAN": {'$regex': search_input, '$options':'i'}},
-		]
-	}
+	search_split = search_input.split()
+	
+	for search_word in search_split:
+		search_text = {
+			"$or": [
+				{"product_name": {'$regex': search_word, '$options':'i'}},
+				{"product_description": {'$regex': search_word, '$options':'i'}},
+				{"manufacturer_name": {'$regex': search_word, '$options':'i'}},
+				{"supplier_name": {'$regex': search_word, '$options':'i'}},
+				{"category_name": {'$regex': search_word, '$options':'i'}},
+				{"product_status": {'$regex': search_word, '$options':'i'}},
+				{"product_EAN": {'$regex': search_word, '$options':'i'}},
+			]
+		}
+
 	results = mongo.db.products.find(search_text)
 	has_results = results.count()
 
