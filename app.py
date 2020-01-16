@@ -22,9 +22,6 @@ def get_dashboard():
 		pie_name="Categories",
 		pie_quantity=mongo.db.products.find(),
 		pie_category=mongo.db.products.find(),
-		products=mongo.db.products.find(), 
-		categories=mongo.db.products.find(), 
-		manufacturers=mongo.db.products.find()
 		)
 
 # Display the products.html webpage and retrieve the relevant data form mongoDB for display

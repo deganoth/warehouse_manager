@@ -58,13 +58,7 @@ span:active{
 	cursor: pointer;
 }
 
-ul#legend-item span:link, ul#legend-item span:visited{
-	text-decoration: line-through;
-	cursor: pointer;
-}
-
-ul#legend-item span:hover, ul#legend-item span:active{
-	
+span:hover{
 	cursor: pointer;
 }
 

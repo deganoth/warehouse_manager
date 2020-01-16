@@ -172,12 +172,11 @@
 
 	});
 
+	var pieLegendContainer = document.getElementById("pie-legend");
 
-	var myLegendContainer = document.getElementById("pie-legend");
+	pieLegendContainer.innerHTML = pieChart.generateLegend();
 
-	myLegendContainer.innerHTML = pieChart.generateLegend();
-
-	var legendItems = myLegendContainer.getElementsByTagName('ul');
+	var legendItems = pieLegendContainer.getElementsByTagName('ul');
 	for (var i = 0; i < legendItems.length; i += 1) {
 		legendItems[i].addEventListener("click", legendClickCallback, true);
 	}
@@ -245,11 +244,11 @@
 		}
 	});
 	
-	var myLegendContainer = document.getElementById("doughnut-legend");
+	var doughnutLegendContainer = document.getElementById("doughnut-legend");
 
-	myLegendContainer.innerHTML = doughnutChart.generateLegend();
+	doughnutLegendContainer.innerHTML = doughnutChart.generateLegend();
 
-	var legendItems = myLegendContainer.getElementsByTagName('ul');
+	var legendItems = doughnutLegendContainer.getElementsByTagName('ul');
 	for (var i = 0; i < legendItems.length; i += 1) {
 		legendItems[i].addEventListener("click", legendClickCallback, true);
 	}
