@@ -18,7 +18,7 @@
 
 .table_overflow{
 	overflow-y:auto;
-	overflow-x:auto;
+	overflow-x:auto;	
 }
 
 .btn {
@@ -52,6 +52,16 @@
 #add-product-card{
 	padding:8.5px 0;
 }
+
+.category-header{
+	
+	margin-left: 10px;
+}
+
+.category-edit{
+	margin-left: 5px;
+}
+
 
 span:active{
 	text-decoration: line-through;

@@ -26,8 +26,6 @@
 					</div>
 					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
 						<li tabindex="0"><a href="{{url_for('add_product')}}">Add new</a></li>
-						<li tabindex="0"><a href="#!">Update</a></li>
-						<li tabindex="0"><a href="#!">Delete</a></li>
 					</ul>
 				</div>
 			</div>
@@ -58,9 +56,7 @@
 					</div>
 					
 					<ul id="products-dropdown" class="dropdown-content" tabindex="0">
-						<li tabindex="0"><a href="#!">Add new</a></li>
-						<li tabindex="0"><a href="#!">Update</a></li>
-						<li tabindex="0"><a href="#!">Delete</a></li>
+						<li tabindex="0"><a href="{{url_for('add_category')}}">Add new</a></li>
 					</ul>
 				</div>
 			</div>
@@ -162,14 +158,10 @@
 					}
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
-
-
 				text.push('</div>');
 				return text.join("");
 			},
-
 		}
-
 	});
 
 	var pieLegendContainer = document.getElementById("pie-legend");
@@ -187,8 +179,8 @@
 	var doughnutChart = new Chart(ctx, {
 		type: 'doughnut',
 		data: {
-			labels: [{% for category in pie_category %}
-			"{{category.category_name}}",
+			labels: [{% for name in pie_category %}
+			"{{name.category_name}}",
 			{% endfor %}],
 			datasets: [{
 				label: '{{pie_name}}',

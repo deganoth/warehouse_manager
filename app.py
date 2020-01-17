@@ -15,6 +15,7 @@ mongo = PyMongo(app)
 # Display the dashboard.html as the primary webpage and retrieve the relevant data from mongoDB
 @app.route('/get_dashboard')
 def get_dashboard():
+	
 	return render_template('dashboard.html', 
 		bar_name="Products",
 		bar_quantity=mongo.db.products.find(),
@@ -23,6 +24,8 @@ def get_dashboard():
 		pie_quantity=mongo.db.products.find(),
 		pie_category=mongo.db.products.find(),
 		)
+
+# Products section 
 
 # Display the products.html webpage and retrieve the relevant data form mongoDB for display
 @app.route('/get_products')
@@ -129,6 +132,35 @@ def get_categories():
 def add_category():
 	return render_template('addcategory.html',
 		categories=mongo.db.categories.find(),
+		)
+
+@app.route('/insert_category', methods=['POST'])
+def insert_category():
+	categories = mongo.db.categories
+	categories.insert_one(request.form.to_dict())
+	return redirect(url_for('get_categories'))
+
+@app.route('/update_category/<category_id>', methods=["POST"])
+def update_category(category_id):
+	categories = mongo.db.categoriess
+	categories.update( {'_id': ObjectId(category_id)},
+		{
+		'category_name':request.form.get('category_name')
+		})
+	return redirect(url_for('get_categories'))
+
+
+@app.route('/edit_category/<category_id>')
+def edit_category(category_id):
+	the_category = mongo.db.categories.find_one({'_id': ObjectId(category_id)})
+	return render_template('editcategory.html', 
+		category=the_category,
+		)
+
+@app.route('/delete_category/<category_id>', methods=["POST"])
+def delete_category(category_id):
+	mongo.db.categories.remove({'_id': ObjectId(category_id)})
+	return redirect(url_for('get_categories')
 		)
 
 if __name__ == '__main__':

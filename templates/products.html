@@ -1,85 +1,85 @@
-		{% extends 'base.html' %}
-		{% block content %}
-		<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">assignment</i> Products</h4></center>
-		<div class="row equal-height-grid">
-			<div class="col l6 s12">
-				<div class="card">
-					<div class="card-content">
-						<div class="nav-wrapper">
-							<div id="add-product-card">
-								<a href="{{url_for('add_product')}}">
-									<button class="btn waves-effect waves-light" id="add-product-button" type="submit" name="action">Add Product 
-										<i class="material-icons right">playlist_add</i>
-									</button>
-								</a>
-							</div>
-						</div> 
+{% extends 'base.html' %}
+{% block content %}
+<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">assignment</i> Products</h4></center>
+<div class="row equal-height-grid">
+	<div class="col l6 s12">
+		<div class="card">
+			<div class="card-content">
+				<div class="nav-wrapper">
+					<div id="add-product-card">
+						<a href="{{url_for('add_product')}}">
+							<button class="btn waves-effect waves-light" id="add-product-button" type="submit" name="action">Add Product 
+								<i class="material-icons right">playlist_add</i>
+							</button>
+						</a>
 					</div>
-				</div>
-			</div>
-			<div class="col l6 s12">
-				<div class="card">
-					<div class="card-content ">
-						<div class="nav-wrapper">
-							<form action="{{url_for('search_products')}}" method="POST">
-								<div class="input-field">
-									<input id="search" type="search" name="input_search" placeholder="Find a Product.." required >
-									<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-									<i class="material-icons">close</i>
-								</div>
-							</form>
-						</div> 
-					</div>
-				</div>
-			</div>
-			
-		</div>
-		<div class="row equal-height-grid">	
-			<div class="col s12">
-				<div class="card">
-					<div class="table_overflow">
-						<table class="striped">
-							<thead>
-								<tr>
-									<!--empty cell for structural purposes-->
-									<th>
-										Options
-									</th>
-									<th>Name</th>
-									<th>Desciption</th>
-									<th>Manufacturer</th>
-									<th>Supplier</th>
-									<th>Category</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Status</th>
-									<th>EAN</th>
-								</tr>
-							</thead>
-							{% for product in products %}
-							<tbody>
-								<tr>
-									<td>
-										<a class="btn-floating btn-medium waves-effect waves-light modal-trigger amber" href="{{url_for('edit_product', product_id=product._id)}}"><i class="material-icons right">edit</i></a>	
-									</td>
-									<td>{{product.product_name}}</td>
-									<td>{{product.product_description}}</td>
-									<td>{{product.manufacturer_name}}</td>
-									<td>{{product.supplier_name}}</td>
-									<td>{{product.category_name}}</td>
-									<td>€{{product.product_price}}</td>
-									<td>{{product.product_quantity}}</td>
-									<td>{{product.product_status}}</td>
-									<td>{{product.product_EAN}}</td>	
-								</tr>
-							</tbody>
-							{% endfor %}
-						</table>
-					</div>	
-				</div>
+				</div> 
 			</div>
 		</div>
-		{% endblock %}
+	</div>
+	<div class="col l6 s12">
+		<div class="card">
+			<div class="card-content ">
+				<div class="nav-wrapper">
+					<form action="{{url_for('search_products')}}" method="POST">
+						<div class="input-field">
+							<input id="search" type="search" name="input_search" placeholder="Find a Product.." required >
+							<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+				</div> 
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="row equal-height-grid">	
+	<div class="col s12">
+		<div class="card">
+			<div class="table_overflow">
+				<table class="striped">
+					<thead>
+						<tr>
+							<!--empty cell for structural purposes-->
+							<th>
+								Options
+							</th>
+							<th>Name</th>
+							<th>Desciption</th>
+							<th>Manufacturer</th>
+							<th>Supplier</th>
+							<th>Category</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Status</th>
+							<th>EAN</th>
+						</tr>
+					</thead>
+					{% for product in products %}
+					<tbody>
+						<tr>
+							<td>
+								<a class="btn-floating btn-medium waves-effect waves-light modal-trigger amber" href="{{url_for('edit_product', product_id=product._id)}}"><i class="material-icons right">edit</i></a>	
+							</td>
+							<td>{{product.product_name}}</td>
+							<td>{{product.product_description}}</td>
+							<td>{{product.manufacturer_name}}</td>
+							<td>{{product.supplier_name}}</td>
+							<td>{{product.category_name}}</td>
+							<td>€{{product.product_price}}</td>
+							<td>{{product.product_quantity}}</td>
+							<td>{{product.product_status}}</td>
+							<td>{{product.product_EAN}}</td>	
+						</tr>
+					</tbody>
+					{% endfor %}
+				</table>
+			</div>	
+		</div>
+	</div>
+</div>
+{% endblock %}
 
 
 

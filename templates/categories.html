@@ -1,49 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">poll</i> Categories</h4></center>
-<div class="card">
-	
-</div>
+<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">assignment</i> Categories</h4></center>
 <div class="row equal-height-grid">
 	<div class="col s12">
 		<div class="card">
-			<div class="card-toolbar">
-				<div class="card-title">
-					Categories
-				</div>
-				<div class="card-toolbar-actions">
-					<div class="dropdown-trigger" data-target="products-dropdown">
-						<i class="material-icons">more_vert</i>
+			<div class="card-content">
+				<div class="nav-wrapper">
+					<div id="add-product-card">
+						<a href="{{url_for('add_category')}}">
+							<button class="btn waves-effect waves-light" id="add-product-button" type="submit" name="action">Add Category 
+								<i class="material-icons right">playlist_add</i>
+							</button>
+						</a>
 					</div>
-					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
-						<li tabindex="0"><a href="{{url_for('add_product')}}">Add new</a></li>
-						<li tabindex="0"><a href="#!">Update</a></li>
-						<li tabindex="0"><a href="#!">Delete</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="table_overflow">
-				<table class="striped">
-					<thead>
-						<tr>
-							<!--empty cell for structural purposes-->
-							
-							<th>Name</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for cat in categories %}
-						
-						<tr>
-							<td>{{cat.category_name}}</td>
-							
-						</tr>
-
-						{% endfor %}
-					</table>
-				</div>	
+				</div> 
 			</div>
 		</div>
-		{% endblock %}
+	</div>
+	
+	
+</div>
+<div class="row equal-height-grid">	
+	<div class="col s12">
+		<div class="card">
+
+			<ul>
+				{% for category in categories %}
+				<li>
+					<div class="collapsible-header">
+						<a href="{{url_for('edit_category', category_id=category._id)}}" class="btn-floating waves-effect waves-light amber"><i class="category-edit material-icons">edit</i></a>
+
+						<div class="category-header"><h6>{{category.category_name}}</h6></div>	
+					</div>
+
+					<div class="collapsible-body"><span><a class="btn-floating btn-medium waves-effect waves-light amber" ><i class="material-icons right">edit</i></a></span></div>
+				</li>
+				{% endfor %}
+			</ul>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}
+
 
 
