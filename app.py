@@ -21,8 +21,8 @@ def get_dashboard():
 		bar_quantity=mongo.db.products.find(),
 		bar_product=mongo.db.products.find(),
 		pie_name="Categories",
-		pie_quantity=mongo.db.products.find(),
-		pie_category=mongo.db.products.find(),
+		pie_quantity=mongo.db.categories.find(),
+		pie_category=mongo.db.categories.find(),
 		)
 
 # Products section 
