@@ -108,7 +108,13 @@
 
 </script>
 <script>
-	
+/*Creates a random colour for each element of a selected chart type*/
+	var randomColor = function () { 
+		var r = Math.floor(Math.random() * 255);
+		var g = Math.floor(Math.random() * 255);
+		var b = Math.floor(Math.random() * 255);
+		return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+	};
 	
 </script>
 <script>
@@ -124,23 +130,9 @@
 				data: [{% for product in bar_quantity %}
 				"{{product.product_quantity}}",
 				{% endfor %}],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-				],
-				borderColor: [
-				'rgba(255, 99, 132, 1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-				],
-				borderWidth: 1
+				backgroundColor: [{% for colour in bar_colour %}
+				randomColor(),
+				{% endfor %}],
 			}]
 		},
 		options: {
@@ -179,34 +171,17 @@
 	var doughnutChart = new Chart(ctx, {
 		type: 'doughnut',
 		data: {
-			labels: [{% for name in pie_category %}
+			labels: [{% for name in doughnut_category %}
 			"{{name.category_name}}",
 			{% endfor %}],
 			datasets: [{
-				label: '{{pie_name}}',
-				data: [{% for quantity in pie_quantity %}
-				"{{quantity.category_quantity}}",
+				label: '{{doughnut_name}}',
+				data: [{% for quantity in doughnut_quantity %}
+				"{{quantity.product_quantity}}",
 				{% endfor %}],
-				backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-				],
-				borderColor: [
-				'rgba(255, 99, 132, 1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-				],
-				borderWidth: 1,
-				pointStyle: 'rectRot',
-				pointRadius: 5,
-				pointBorderColor: 'rgb(0,0,0)'
+				backgroundColor: [{% for colour in doughnut_colour %}
+				randomColor(),
+				{% endfor %}],
 			}]
 		},
 		options: {
@@ -228,7 +203,6 @@
 					}
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
-
 				text.push('</div>');
 				return text.join("");
 			},

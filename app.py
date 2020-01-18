@@ -2,6 +2,8 @@ import os, re
 from flask import Flask, render_template, redirect, request, url_for, json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from bson.code import Code
+
 
 app = Flask(__name__)
 
@@ -15,14 +17,33 @@ mongo = PyMongo(app)
 # Display the dashboard.html as the primary webpage and retrieve the relevant data from mongoDB
 @app.route('/get_dashboard')
 def get_dashboard():
-	
+	change_categories = mongo.db.products.aggregate(
+	    [
+	        {"$group": {"_id": "$category_name", "unique_categories": {"$addToSet": "$_id"}, "count": {"$sum": 1}}},
+	        {"$match": {"count": { "$gte": 2 }}}
+	    ]
+	)
+
+	new_categories = []
+
+	for category in change_categories:
+		for id in category["unique_categories"]:
+			new_categories.append(id)
+
+	print(new_categories)
+
+	#mongo.db.products.update({"_id": {"$in": new_categories}})
+
 	return render_template('dashboard.html', 
+		new_categories=new_categories,
 		bar_name="Products",
 		bar_quantity=mongo.db.products.find(),
+		bar_colour=mongo.db.products.find(),
 		bar_product=mongo.db.products.find(),
-		pie_name="Categories",
-		pie_quantity=mongo.db.categories.find(),
-		pie_category=mongo.db.categories.find(),
+		doughnut_name="Categories",
+		doughnut_quantity=mongo.db.products.find(),
+		doughnut_colour=mongo.db.products.find(),
+		doughnut_category=mongo.db.products.find(),
 		)
 
 # Products section 
