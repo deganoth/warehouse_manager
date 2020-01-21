@@ -29,7 +29,7 @@ def get_dashboard():
 		doughnut_category=mongo.db.products.find(),
 		)
 
-# Products section 
+# PRODUCT FUNCTIONS
 
 # Display the products.html webpage and retrieve the relevant data form mongoDB for display
 @app.route('/get_products')
@@ -125,6 +125,8 @@ def delete_product(product_id):
 	mongo.db.products.remove({'_id': ObjectId(product_id)})
 	return redirect(url_for('get_products')
 		)
+
+# CATEGORY FUNCTIONS
 
 @app.route('/get_categories')
 def get_categories():

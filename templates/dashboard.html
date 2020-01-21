@@ -69,7 +69,6 @@
 						<canvas id="doughnutChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
 
-					
 					<div class="col s12 m6 l12">
 						<div id="doughnut-legend">
 
@@ -82,6 +81,7 @@
 	
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
 
 <!--Inline javascript charts. required for using jinja template shorthand-->
 <script>
@@ -121,6 +121,8 @@
 	
 </script>
 <script>
+/* PRODUCTS CHART DISPLAY USING DATA FROM MONGODB */
+
 	var ctx = document.getElementById('pieChart').getContext('2d');
 	var pieChart = new Chart(ctx, {
 		type: 'pie',
@@ -147,7 +149,7 @@
 				var text = [];
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-					text.push('<ul id="legend-item"><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					text.push('<ul><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
 						text.push(chart.data.labels[i]);
 					}
@@ -170,6 +172,8 @@
 
 </script>
 <script>
+/* CATEGORIES CHART DISPLAY USING DATA FROM MONGODB */
+
 	var ctx = document.getElementById('doughnutChart').getContext('2d');
 	var doughnutChart = new Chart(ctx, {
 		type: 'doughnut',
@@ -198,18 +202,25 @@
 			},
 			legendCallback: function(chart) {
 				var text = [];
+				var result = [];
+				var count = 0;
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
-					text.push('<ul id="legend-item"><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+					text.push('<ul><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
 						text.push(chart.data.labels[i]);
+						if (chart.data.labels[i] == "Guitars" || chart.data.labels == "Live Sound"){
+							count = count + 1;
+							if (count > 1){
+								text.push("rabbit")
+							}
+						}
 					}
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
 				text.push('</div>');
 				return text.join("");
 			},
-			
 		}
 	});
 	
