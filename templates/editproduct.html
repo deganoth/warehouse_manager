@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">create</i>Edit Product</h4></center>
+<h4 class="center"><i class="material-icons prefix">create</i>Edit Product</h4>
 <div class="row equal-height-grid">	
 	<div class="row">
 		<form action="{{url_for('update_product', product_id=product._id)}}" method="POST" class="col s12">

@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<center><h4>Dashboard</h4></center>
-<div class="card">
-	<div class="card-content">
-		<div class="nav-wrapper">
-			<form action="{{url_for('search_products')}}" method="POST">
-				<div class="input-field">
-					<input id="search" type="search" name="input_search" placeholder="Find a Product.." require>
-					<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-					<i class="material-icons">close</i>
-				</div>
-			</form>
-		</div>    
+<h4 class="center"><i class="material-icons prefix">show_chart</i> Dashboard</h4>
+<div class="row equal-height-grid">
+	<div class="col s12">
+		<div class="card">
+			<div class="card-content">
+				<div class="nav-wrapper">
+					<form action="{{url_for('search_products')}}" method="POST">
+						<div class="input-field">
+							<input id="search" type="search" name="input_search" placeholder="Find a Product.." require>
+							<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+				</div>    
+			</div>
+		</div>
 	</div>
 </div>
-
 <div class="row equal-height-grid">
 	<div class="col l6 s12">
 		<div class="card">
@@ -108,7 +111,7 @@
 
 </script>
 <script>
-/*Creates a random colour for each element of a selected chart type*/
+	/*Creates a random colour for each element of a selected chart type*/
 	var randomColor = function () { 
 		var r = Math.floor(Math.random() * 255);
 		var g = Math.floor(Math.random() * 255);

@@ -18,25 +18,7 @@ mongo = PyMongo(app)
 # Display the dashboard.html as the primary webpage and retrieve the relevant data from mongoDB
 @app.route('/get_dashboard')
 def get_dashboard():
-	change_categories = mongo.db.products.aggregate(
-	    [
-	        {"$group": {"_id": "$category_name", "unique_categories": {"$addToSet": "$_id"}, "count": {"$sum": 1}}},
-	        {"$match": {"count": { "$gte": 2 }}}
-	    ]
-	)
-
-	new_categories = []
-
-	for category in change_categories:
-		for id in category["unique_categories"]:
-			new_categories.append(id)
-
-	print(new_categories)
-
-	#mongo.db.products.update({"_id": {"$in": new_categories}})
-
 	return render_template('dashboard.html', 
-		new_categories=new_categories,
 		bar_name="Products",
 		bar_quantity=mongo.db.products.find(),
 		bar_colour=mongo.db.products.find(),

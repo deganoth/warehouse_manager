@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<center><h4><i class="material-icons prefix" style="font-size: 2.1rem">create</i>Edit Category</h4></center>
-<div class="row equal-height-grid">	
+<h4 class="center"><i class="material-icons prefix">create</i>Edit Category</h4>
 	<div class="row">
 		<form action="{{url_for('update_category', category_id=category._id)}}" method="POST" class="col s12">
 			<div class="row">
