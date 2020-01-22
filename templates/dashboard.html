@@ -203,23 +203,42 @@
 			legendCallback: function(chart) {
 				var text = [];
 				var result = [];
-				var count = 0;
+				var x;
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
 					text.push('<ul><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
-						text.push(chart.data.labels[i]);
-						if (chart.data.labels[i] == "Guitars" || chart.data.labels == "Live Sound"){
-							count = count + 1;
-							if (count > 1){
-								text.push("rabbit")
-							}
-						}
-					}
+						var labels = chart.data.labels[i];
+						result.push(labels);
+						text.push(labels);
+						
+					}	
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
+
+
+				/* test script to change display of labels */
+				i = 0;
+				j = result.length - 1;
+				current = result[i];
+
+				for (; i < result.length; i++) {
+				  current = result[i];
+				  for (; j > i; j--) {
+				    if (current === result[j]) {
+				      if (Array.isArray(current.result)) {
+				        current.result = current.result.concat([result[j].result]);
+				      } else {
+				        current.result = [].concat([result[j].result, current.result]);
+				      }
+				      result.splice(j, 2);
+				    }
+				  }
+				}
+					
 				text.push('</div>');
-				return text.join("");
+				return text.join("");	
+
 			},
 		}
 	});
