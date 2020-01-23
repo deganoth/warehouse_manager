@@ -23,19 +23,21 @@
 	<div class="col s12">
 		<div class="card">
 			<div class="table_overflow">
-				<table class="striped">
+				<table id="productsTable" class="striped">
 					<thead>
 						<tr>
 							<!--empty cell for structural purposes-->
-							<th>Options</th>
-							<th>Name</th>
+							<th>
+								Options
+							</th>
+							<th onclick="sortTable(0)">Name</th>
 							<th>Desciption</th>
-							<th>Manufacturer</th>
-							<th>Supplier</th>
-							<th>Category</th>
-							<th>Price</th>
-							<th>Quantity</th>
-							<th>Status</th>
+							<th onclick="sortTable(1)">Manufacturer</th>
+							<th onclick="sortTable(2)">Supplier</th>
+							<th onclick="sortTable(3)">Category</th>
+							<th onclick="sortTable(4)">Price</th>
+							<th onclick="sortTable(5)">Quantity</th>
+							<th onclick="sortTable(6)">Status</th>
 							<th>EAN</th>
 						</tr>
 					</thead>

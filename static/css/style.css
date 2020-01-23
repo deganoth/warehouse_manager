@@ -61,7 +61,6 @@
 	margin-left: 5px;
 }
 
-
 span:active{
 	text-decoration: line-through;
 	cursor: pointer;
@@ -69,6 +68,32 @@ span:active{
 
 span:hover{
 	cursor: pointer;
+}
+thead:hover{
+	cursor: pointer;
+}
+
+.headerSortDown:after,
+.headerSortUp:after {
+  content: ' ';
+  position: relative;
+  left: 2px;
+  border: 8px solid transparent;
+}
+
+.headerSortDown:after {
+  top: 10px;
+  border-top-color: silver;
+}
+
+.headerSortUp:after {
+  bottom: 15px;
+  border-bottom-color: silver;
+}
+
+.headerSortDown,
+.headerSortUp {
+  padding-right: 10px;
 }
 
 @media only screen and (min-width: 993px) {
