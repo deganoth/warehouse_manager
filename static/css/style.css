@@ -1,8 +1,11 @@
 
 
+th>span{
+  display:none;
+}
+
 #nav-icon-visible{
 	font-size: 2.1rem;
-	
 }
 
 #sidenav-header-logo{
@@ -38,6 +41,7 @@
 	overflow-x:auto;	
 }
 
+/* buttons */
 .btn {
 	float:left;
 	width: 100%;
@@ -112,6 +116,8 @@ thead:hover{
 .headerSortUp {
 	padding-right: 10px;
 }
+
+/* specific media queries  */
 
 @media only screen and (min-width: 993px) {
 	nav a.sidenav-trigger {
