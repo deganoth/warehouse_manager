@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.css">
     <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link rel="shortcut icon" href="static/images/baseline_view_list_white_18dp.png" type="image/x-icon">
 
     <title>Warehouse|Manager</title>
 </head>
@@ -19,9 +20,12 @@
                     <a href="{{url_for('get_dashboard')}}" class="brand-logo center">Warehouse<i class="material-icons" id="nav-icon-visible">store_mall_directory</i></a>
                     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul id="slide-out" class="sidenav">
-                        <li><a href="{{url_for('get_dashboard')}}">Dashboard</a></li>
-                        <li><a href="{{url_for('get_products')}}">Products</a></li>
-                        <li><a href="{{url_for('get_categories')}}">Categories</a></li>
+                        <li><a class = "sidenav-header" href="{{url_for('get_dashboard')}}"><i class="material-icons prefix" id="sidenav-header-logo">account_circle</i>Admin</a></li>
+                        <li><a href="{{url_for('get_dashboard')}}"><i class="material-icons prefix">show_chart</i>Dashboard</a></li>
+                        <li><a href="{{url_for('get_products')}}"><i class="material-icons prefix">assignment</i>Products</a></li>
+                        <li><a href="{{url_for('get_categories')}}"><i class="material-icons prefix">assessment</i>Categories</a></li>
+                        <li><a href="{{url_for('get_products')}}"><i class="material-icons prefix">create</i>Add Product</a></li>
+                        <li><a href="{{url_for('get_categories')}}"><i class="material-icons prefix">create</i>Add Category</a></li>
                     </ul>
                 </div>
             </nav>

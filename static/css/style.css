@@ -1,20 +1,37 @@
 
+
 #nav-icon-visible{
 	font-size: 2.1rem;
-	display:normal;
+	
+}
+
+#sidenav-header-logo{
+	line-height: 68px;
+}
+
+.sidenav .sidenav-header{
+	font-size: 24px;
+	height: 64px;
+	line-height: 64px;
 }
 
 .card .card-toolbar {
 	display:flex;
 	padding:24px;
 	justify-content:space-between;
+}
 
+.card-title-icon{
+	vertical-align: -4px;
+}
+
+.card-title-dropdown-icon{
+	vertical-align: -14px;
 }
 
 .card .product_quantity{
 	float: right;
 }
-
 
 .table_overflow{
 	overflow-y:auto;
@@ -75,25 +92,25 @@ thead:hover{
 
 .headerSortDown:after,
 .headerSortUp:after {
-  content: ' ';
-  position: relative;
-  left: 2px;
-  border: 8px solid transparent;
+	content: ' ';
+	position: relative;
+	left: 2px;
+	border: 8px solid transparent;
 }
 
 .headerSortDown:after {
-  top: 10px;
-  border-top-color: silver;
+	top: 10px;
+	border-top-color: silver;
 }
 
 .headerSortUp:after {
-  bottom: 15px;
-  border-bottom-color: silver;
+	bottom: 15px;
+	border-bottom-color: silver;
 }
 
 .headerSortDown,
 .headerSortUp {
-  padding-right: 10px;
+	padding-right: 10px;
 }
 
 @media only screen and (min-width: 993px) {

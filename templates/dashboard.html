@@ -22,25 +22,26 @@
 	<div class="col l6 s12">
 		<div class="card">
 			<div class="card-toolbar">
-				<div><a href="{{url_for('get_products')}}" class="card-title">Products</a></div>
+				<div><a href="{{url_for('get_products')}}" class="card-title"><i class="material-icons prefix card-title-icon">assignment</i> Products</a></div>
 				<div class="card-toolbar-actions">
 					<div class="dropdown-trigger" data-target="products-dropdown">
-						<i class="material-icons">more_vert</i>
+						<i class="material-icons card-title-dropdown-icon">more_vert</i>
 					</div>
 					<ul id="products-dropdown" class="dropdown-content" tabindex="0" style="">
 						<li tabindex="0"><a href="{{url_for('add_product')}}">Add new</a></li>
 					</ul>
 				</div>
+				</ul>
 			</div>
 
 			<div class="card-content">
 				<div class="row row-vertical-center no-margin">
 					
-					<div class="col s12 m6 l12">
+					<div class="col s12 m4 l12">
 						<canvas id="pieChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
 
-					<div class="col s12 m6 l12">
+					<div class="col s12 m8 l12">
 						<div id="pie-legend"></div>
 					</div>
 					
@@ -52,10 +53,10 @@
 	<div class="col l6 s12">
 		<div class="card">
 			<div class="card-toolbar">
-				<div><a href="{{url_for('get_categories')}}" class="card-title">Categories</a></div>
+				<div><a href="{{url_for('get_categories')}}" class="card-title"><i class="material-icons prefix card-title-icon">assessment</i> Categories</a></div>
 				<div class="card-toolbar-actions">
 					<div class="dropdown-trigger" data-target="products-dropdown">
-						<i class="material-icons">more_vert</i>
+						<i class="material-icons card-title-dropdown-icon">more_vert</i>
 					</div>
 					
 					<ul id="products-dropdown" class="dropdown-content" tabindex="0">
@@ -65,11 +66,11 @@
 			</div>
 			<div class="card-content">
 				<div class="row row-vertical-center no-margin">
-					<div class="col s12 m6 l12">
+					<div class="col s12 m4 l12">
 						<canvas id="doughnutChart" width="150" style="display: block; width: 150px; height: 75px;" height="75" class="chartjs-render-monitor"></canvas>
 					</div>
 
-					<div class="col s12 m6 l12">
+					<div class="col s12 m8 l12">
 						<div id="doughnut-legend">
 
 						</div>
@@ -80,12 +81,9 @@
 	</div>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-
 <!--Inline javascript charts. required for using jinja template shorthand-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.js"></script>
 <script>
-	
 	/* custom legend onclick function for use with <ul> elemnents */
 
 	function legendClickCallback(event){
@@ -101,13 +99,7 @@
 		var index = Array.prototype.slice.call(parent.children).indexOf(target);
 
 		chart.legend.options.onClick.call(chart, event, chart.legend.legendItems[index]);
-		if(chart.isDatasetVisible(index)){
-			target.classList.remove('hidden');
-		}else{
-			target.classList.add('hidden');
-		}
 	}
-
 
 </script>
 <script>
@@ -151,13 +143,15 @@
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
 					text.push('<ul><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 					if (chart.data.labels[i]) {
-						text.push(chart.data.labels[i]);
+						var labels = chart.data.labels[i];
+						text.push(labels);
 					}
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
 				text.push('</div>');
 				return text.join("");
 			},
+
 		}
 	});
 
@@ -179,7 +173,7 @@
 		type: 'doughnut',
 		data: {
 			labels: [{% for name in doughnut_category %}
-			"{{name.category_name}}",
+			"{{name.category_name}} - {{name.manufacturer_name}}",
 			{% endfor %}],
 			datasets: [{
 				label: '{{doughnut_name}}',
@@ -202,22 +196,17 @@
 			},
 			legendCallback: function(chart) {
 				var text = [];
-				var result = [];
-				var cat1 = 0;
-				var cat2 = 0;
 				text.push('<div class="' + chart.id + '-legend">');
 				for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
 					text.push('<ul><span class="legend-button" style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
 
 					if (chart.data.labels[i]) {
 						var labels = chart.data.labels[i];
-						result.push(labels);
 						text.push(labels);
-						
 					}	
+
 					text.push('</span><span class="product_quantity">' + chart.data.datasets[0].data[i] + '</span></ul>');
 				}
-
 				text.push('</div>');
 				return text.join("");	
 
