@@ -84,8 +84,8 @@
 <!--Inline javascript charts. required for using jinja template shorthand-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.js"></script>
 <script>
-	/* custom legend onclick function for use with <ul> elemnents */
 
+/* custom legend onclick function for use with <ul> elemnents */
 	function legendClickCallback(event){
 		event = event || window.event;
 
@@ -103,7 +103,8 @@
 
 </script>
 <script>
-	/*Creates a random colour for each element of a selected chart type*/
+
+/*Creates a random colour for each element of a selected chart type*/
 	var randomColor = function () { 
 		var r = Math.floor(Math.random() * 255);
 		var g = Math.floor(Math.random() * 255);
@@ -113,8 +114,8 @@
 	
 </script>
 <script>
-/* PRODUCTS CHART DISPLAY USING DATA FROM MONGODB */
 
+/* PRODUCTS CHART DISPLAY USING DATA FROM MONGODB */
 	var ctx = document.getElementById('pieChart').getContext('2d');
 	var pieChart = new Chart(ctx, {
 		type: 'pie',
@@ -166,8 +167,8 @@
 
 </script>
 <script>
-/* CATEGORIES CHART DISPLAY USING DATA FROM MONGODB */
 
+/* CATEGORIES CHART DISPLAY USING DATA FROM MONGODB */
 	var ctx = document.getElementById('doughnutChart').getContext('2d');
 	var doughnutChart = new Chart(ctx, {
 		type: 'doughnut',

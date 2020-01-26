@@ -1,4 +1,7 @@
+/* sort tbale function available from https://www.w3schools.com/howto/howto_js_sort_table.asp */
+
 function sortTable(n) {
+  
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("productsTable");
   switching = true;
@@ -21,10 +24,11 @@ function sortTable(n) {
       y = rows[i + 1].getElementsByTagName("TD")[n];
       /*check if the two rows should switch place,
       based on the direction, asc or desc:*/
+     
       if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           //if so, mark as a switch and break the loop:
-          
+         
           shouldSwitch= true;
           break;
         }
@@ -43,13 +47,24 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
+      switchcount ++;    
+
+      
     } else {
+      /* establish an untoggled state for the sorting switches */
+      
+
       /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
+      set the direction to "desc" and run the while loop again.
+      set the direction of the arrow to match the sort direction*/
       if (switchcount == 0 && dir == "asc") {
+       
         dir = "desc";
         switching = true;
+      }else{
+        
+        dir = "asc";
+        switching = false;
       }
     }
   }
