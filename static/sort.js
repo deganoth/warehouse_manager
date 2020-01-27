@@ -1,7 +1,5 @@
 /* sort tbale function available from https://www.w3schools.com/howto/howto_js_sort_table.asp */
-
 function sortTable(n) {
-  
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("productsTable");
   switching = true;
@@ -52,8 +50,6 @@ function sortTable(n) {
       
     } else {
       /* establish an untoggled state for the sorting switches */
-      
-
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.
       set the direction of the arrow to match the sort direction*/
