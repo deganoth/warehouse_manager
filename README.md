@@ -42,65 +42,73 @@ As the primary feature set of this app, the user can interact with the mongoDB c
 While understanding the sort function provided by w3schools, a smaller but similar sort arrow display function was created. It takes "n" as a parameter, much in the same way as the sort function. This allows multiple versions of the same function to be used within a html page. The table id is requested and set to a variable. Each tag name within the table is then targeted to change its class. This function can be called multiple times by inserting the associated "TH" cell number. In this instance, "Options" would be associated with "0", "Name" would be "1" and so on. While not directly associated with the sort app because of the default layout sent form mongoDB, the arrows change on each click represents the change in alphabetical direction of each column.
 
 #### 7. Cross Platform Design
-Wether using this app on mobile, tablet or desktop, its feature set is displayed accordingly. This is acheived through a combination of Materialize classes, and css media queries. Materialize makes use of a class nameing system similar to that of Bootstrap. Rows and columns divided into 12 segments. Column widths can be pre determined per screen size. For example, "class = "col l4 m6 s12" " would yeild a column of 1/3 the row width on large screen, 1/6 on medium screen, and the full width on smaller screens. Materialize also makes use of a Card system for displaying content. This represents the rows and columns in a tidy way.
+Wether using this app on mobile, tablet or desktop, its feature set is displayed accordingly. This is acheived through a combination of Materialize classes, and css media queries. Materialisze makes use of a class nameing system similar to that of Bootstrap. Rows and columns divided into 12 segments. Column widths can be pre determined per screen size. For example, "class = "col l4 m6 s12" " would yeild a column of 1/3 the row width on large screen, 1/6 on medium screen, and the full width on smaller screens. Materialize also makes use of a Card system for displaying content. This represents the rows and columns in a tidy way.
 
 ## Technologies Used for Development
 
 ### Development
 
 ##### Python 3.8 - https://www.python.org/
-The language use for connecting between the flask based web app, and the mongoDB database.
-
-##### Javascript
-
+The language used for connecting between the flask based web app, and the mongoDB database. Flask_pymongo is a repository of functions designed to work with mongoDB. 
+##### Javascript - https://www.javascript.com/
+Primarily used for display purposes in this project, it provided me with chart.js to display the mongoDB data interactively in a user friendly manner.
 ##### HTML5/CSS3
 These tools were used to create the basic layout of the webpage. 
-
-##### MongoDB - https://www.mongodb.com/
-
-##### Sublime - https://www.sublimetext.com/
-I made use of this text editor during the final stages of development. I switched from cloud9 to a local server to verify that the game functioned as desired.
-I also use it to verify asset file paths functioned as requested.
-
 ##### Jinja - https://palletsprojects.com/p/jinja/
-
+This templating language was used in conjunction with flask_pymongo. It allows access to the application routing created in the app.py file. Using Jinja, a link to teach defined function can be called. In addition, mongoDB can be accessed from defined variables within any function of the app.py file.
+##### Sublime - https://www.sublimetext.com/
+I made use of this text editor throughout development. A super felxible text editor designed for writing code. 
+##### MongoDB - https://www.mongodb.com/
+The primary data source for this project. It provides a dataset stored in collections then dictionaries, and finally documents within the dictionaries. Access can be granted through various languages using a "connection string" available on the dashboard. In this case, flask_pymongo made use of this connection string. Documentation is available at length, providing details on in depth collection manipulation.
 ##### Git/GitHub - https://github.com/deganoth
-
+I made use of this to host my project. I communicated via cmd.exe to share all project files and folders, including this file.
 ##### Heroku - https://en.wikipedia.org/wiki/Heroku
-
+Heroku is used to host apps in various languges. In this case, it provides a live version of the app.py python file. There are prerequisites to making use of this service. These include a requirements.txt file, Procfile and some python libraries including flask-pymongo and dnspython. A connection must be made via the local git repository and heroku also. This allows pushing the entire project to heroku for hosting.
 ##### cmd - https://en.wikipedia.org/wiki/Cmd.exe
-
+Windows based terminal for inserting commands.
 ##### Chart.js - https://www.chartjs.org/
-
+This javascript based library provides user friendly responsive charts for displaying data. Connecting the scripts to mongoDB made use of Jinja once again. The scripts had to remain on the selected .html page for use, along with the cdn link call. Once in place, 
+##### JQuery - https://jquery.com/
+A requirement for making use of Jinja via the flask_pymongo library. It allowed jinja based queries to be made in html documents, referring to flask_pymongo functions.
 
 ### Testing
 
-#### Firebox/Chrome Developer tools
-Making use of the inspector console to check functionality, and investigate errors was vital for a smooth running game.
-I found this invaluable. Phaser 3 errors read quite easily, with experience. In addition, the scaling issues were resolved by using the Responsive Design mode. Screen that were tested on are:
+#### Firebox/Chrome Developer tools/cmd
+Making use of the inspector console to check functionality, and investigate errors was vital for a smooth running app. Cmd also revealed data errors locally. Included in the flask_pymongo, and in conjunction with Jinja is the Werkzeug error reporting system. It reveals errors in great detail. While testing visually on the following platforms:
 * iPhone 5 - 8 
 * Samsung Galax7 S5, S7, S8
 * ChromeBook 10"
 * iPad Mini
 * iPad Pro
 * iPad 2
+Data errors and syntax problems were addressed using this error system.
 
 #### Manual User Tests
-Game testers. My work colleagues, family members, nieces and nephews all gave valid feedback throughout development. Some of the key issues were:
-* **Scaling** - While testing across as many devices as possible, some web browsers would not allow scaling to occur between portrait and landscape. 
-This was my error, as I had yet to make use the Phaser 3 scale manager, and was using a scaling function of my own.
-* **Control Layout** - I found most players preferred to have the jump button in the center of the screen. It contradicted my thinking as a console player
-* **Purpose** - Initially the game was quite difficult to understand. Without the About section in the menu, it remained  mystery for some testers.
-* **Player Bounds** - Some testers found it frustrating to be limited by having a set of status bars at the top of the screen. This was before the onscreen controls were modified. The screen was quite busy and cluttered.
+App testers. My work colleagues provided primary feedback on functionailty. Since the app is based on the in house epostrader system, their input was essential. Some of the key issues were:
+* **Searching** - With the help of my mentor, SPencer, a search function was created. It took a single input and interated through each document in the collection for matching results. While functional, a more indepth string based input was suggested. By taking the string and splitting it into words, this was achieved.
+* **Data Layout** - Having charts render data made sense, but the data displayed didn't initially. Determining which fields to display proved difficult, until combing two together. Initially, categories was dispalyed on it's own. There was some repetition. I decided to put the brand name beside each category name. This allowed the user to see which brand in which category was on display.
+* **Sorting tables** - Making use of a javascript library for this was tried initially, but it didn't display correctly due to materialize conflicts in class names. I decided to add some of the features from it manually via plain javascript functions. w3schools provided an excellent search function iterating through each row. Arrows were then added through swapping CSS classes using a javascript function. The arrow is actually a box border that changes from top to bottom, depending on the number of clicks.
 
 #### Known Errors
-While testing in all popular browsers, Firfox revealed a color based error; "Expected color but found '0' ". This is a known error regarding specific color codes. It referes to the use of "0x" rather than "#" for specifying or changing hex colour values of text items onscreen. I made use of bitmap text primarily. The error is read form the .fnt files contained in the project folders.
+While testing in all popular browsers, Firfox revealed a collection of errors within materialize; Error in parsing value for ‘-webkit-text-size-adjust’.  Declaration dropped. materialize.css:2155:29
+Unknown property ‘-moz-text-decoration’.  Declaration dropped. materialize.css:2257:27
+Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6113:2
+Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6116:2
+Unknown pseudo-class or pseudo-element ‘-webkit-autofill’.  Ruleset ignored due to bad selector. materialize.css:6554:28
+Expected ‘none’, URL, or filter function but found ‘alpha(’.  Error in parsing value for ‘filter’.  Declaration dropped. materialize.css:7326:11
+Unknown pseudo-class or pseudo-element ‘-ms-track’.  Ruleset ignored due to bad selector. materialize.css:7465:19
+Unknown pseudo-class or pseudo-element ‘-ms-fill-lower’.  Ruleset ignored due to bad selector. materialize.css:7474:19
+Unknown pseudo-class or pseudo-element ‘-ms-fill-upper’.  Ruleset ignored due to bad selector. materialize.css:7478:19
+Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7482:19
+Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7494:56
+Error in parsing value for ‘letter-spacing’.  Declaration dropped. materialize.css:7516:19
+Unknown property ‘-moz-osx-font-smoothing’.  Declaration dropped. icon:22:27
 
+As can be seen, these relate specifically to Firefox not supporting certain css selectors and functions. On all other popular browsers, no console errors occur. Browsers include Opera, Chrome, Microsoft Edge and Safari
 
 ## Deployment
-I made use of GitHub to host this project. A link above allows a user to play the web application in a browser window. To contribute to or clone for learning purposes, git provides an option as the top right of the master repository. 
-To test locally, a local server is required such as WAMP or XAMP. This is necessary due to the Cross Origin Resource Sharing being unavailable in modern browsers. I made use of WAMP for testing. In this case, when cloning the repository, it must be cloned to the "www" folder of the "wamp_server" directory.
-This allows you to create a new virtual host when in the localhost browser window. Once created, making use of a text editor such as Sublime, or Atom to modify the files in the JS folder will change elements in the game.
+I made use of GitHub to host the project files. To contribute to or clone for learning purposes, git provides an option as the top right of the master repository. Heroku is used for live testing online. A link to the Heroku app is linked above.
+To test locally, Python 3.8 must be installed on your device. This allows running of the app.py function. Also, the file structure is essential for Flask to work correctly, as it requires folders such as "static" for images and CSS files, and "templates" for html files. Once created, making use of a text editor such as Sublime, or Atom to modify the files in the JS folder will change elements in the game.
 The local host registers "index.html" as the main project web page, and loads it upon selecting your newly created sales-hemorrhage virtual host. Just refresh the page to see new changes. All links below detail problems and solutions found, including using WAMP server with Phaser 3.
 
 How to make a new project in WAMP - https://www.development-tutorial.com/create-new-project-wampserver/
