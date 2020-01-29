@@ -1,5 +1,5 @@
 
-<img src = "https://raw.githubusercontent.com/deganoth/warehouse_manager/static/images/readme_logo.png" target= "_blank" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+<img src = "https://raw.githubusercontent.com/deganoth/warehouse_manager/static/images/readme_logo.png">
 
 # Warehouse Manger - A cross platform stock managment system.
 
@@ -90,19 +90,20 @@ App testers. My work colleagues provided primary feedback on functionailty. Sinc
 * **Sorting tables** - Making use of a javascript library for this was tried initially, but it didn't display correctly due to materialize conflicts in class names. I decided to add some of the features from it manually via plain javascript functions. w3schools provided an excellent search function iterating through each row. Arrows were then added through swapping CSS classes using a javascript function. The arrow is actually a box border that changes from top to bottom, depending on the number of clicks.
 
 #### Known Errors
-While testing in all popular browsers, Firfox revealed a collection of errors within materialize; Error in parsing value for ‘-webkit-text-size-adjust’.  Declaration dropped. materialize.css:2155:29
-Unknown property ‘-moz-text-decoration’.  Declaration dropped. materialize.css:2257:27
-Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6113:2
-Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6116:2
-Unknown pseudo-class or pseudo-element ‘-webkit-autofill’.  Ruleset ignored due to bad selector. materialize.css:6554:28
-Expected ‘none’, URL, or filter function but found ‘alpha(’.  Error in parsing value for ‘filter’.  Declaration dropped. materialize.css:7326:11
-Unknown pseudo-class or pseudo-element ‘-ms-track’.  Ruleset ignored due to bad selector. materialize.css:7465:19
-Unknown pseudo-class or pseudo-element ‘-ms-fill-lower’.  Ruleset ignored due to bad selector. materialize.css:7474:19
-Unknown pseudo-class or pseudo-element ‘-ms-fill-upper’.  Ruleset ignored due to bad selector. materialize.css:7478:19
-Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7482:19
-Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7494:56
-Error in parsing value for ‘letter-spacing’.  Declaration dropped. materialize.css:7516:19
-Unknown property ‘-moz-osx-font-smoothing’.  Declaration dropped. icon:22:27
+While testing in all popular browsers, Firfox revealed a collection of errors within materialize; 
+* Error in parsing value for ‘-webkit-text-size-adjust’.  Declaration dropped. materialize.css:2155:29
+* Unknown property ‘-moz-text-decoration’.  Declaration dropped. materialize.css:2257:27
+* Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6113:2
+* Unknown pseudo-class or pseudo-element ‘-ms-input-placeholder’.  Ruleset ignored due to bad selector. materialize.css:6116:2
+* Unknown pseudo-class or pseudo-element ‘-webkit-autofill’.  Ruleset ignored due to bad selector. materialize.css:6554:28
+* Expected ‘none’, URL, or filter function but found ‘alpha(’.  Error in parsing value for ‘filter’.  Declaration dropped. materialize.css:7326:11
+* Unknown pseudo-class or pseudo-element ‘-ms-track’.  Ruleset ignored due to bad selector. materialize.css:7465:19
+* Unknown pseudo-class or pseudo-element ‘-ms-fill-lower’.  Ruleset ignored due to bad selector. materialize.css:7474:19
+* Unknown pseudo-class or pseudo-element ‘-ms-fill-upper’.  Ruleset ignored due to bad selector. materialize.css:7478:19
+* Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7482:19
+* Unknown pseudo-class or pseudo-element ‘-ms-thumb’.  Ruleset ignored due to bad selector. materialize.css:7494:56
+* Error in parsing value for ‘letter-spacing’.  Declaration dropped. materialize.css:7516:19
+* Unknown property ‘-moz-osx-font-smoothing’.  Declaration dropped. icon:22:27
 
 As can be seen, these relate specifically to Firefox not supporting certain css selectors and functions. On all other popular browsers, no console errors occur. Browsers include Opera, Chrome, Microsoft Edge and Safari
 
