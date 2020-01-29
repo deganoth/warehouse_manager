@@ -1,7 +1,7 @@
 
 <img src = "https://raw.githubusercontent.com/deganoth/sales-hemorrhage/master/staric/images/readme_logo.png" target= "_blank" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
-# Waerhouse Manger - A cross platform stock managment system.
+# Warehouse Manger - A cross platform stock managment system.
 
 ## Link to the app hosted on Heroku. 
 https://mewsik-shop-inventory.herokuapp.com/
@@ -167,23 +167,11 @@ Connecting Google Sheets with MongoDB
 App theme basis
 * https://themes.materializecss.com/pages/admin-dashboard	
 
-
 ## Credits
 
 * My Mentor, **Spencer Bariball** for showing me the ropes, and being a great teacher. 
-* https://rexrainbow.github.io/phaser3-rex-notes/docs/site/ - A user fiendly version of the APIfriendlyntation
+* https://www.patricksoftwareblog.com - A super detailed look at combining mongoDB and charts.
 * https://codeinstitute.net/ - For making this possible.
-* https://www.youtube.com/channel/UCoLblLUQbqjfCAmU13LbwHw - Luis Zuno. Easy to follow videos, great solutions.
-* https://phaser.io/examples - It's always in the last place you look. Invaluable resource for knowing their own platform! 
+* https://preslav.me/2019/01/09/dotenv-files-python/ - Providing easy to follow security for Flask apps.
 
-### SFX
-* https://freesound.org/people/kiddpark/sounds/201159/ - kiddpark
-* https://freesound.org/people/Zott820/sounds/209578/ - Zott820
-* https://freesound.org/people/Timbre/sounds/404028/ - Timbre
-* https://freesound.org/people/broodmes/sounds/47962/ - broodmes
-* https://freesound.org/people/creek23/sounds/75235/ - creek23
-* https://www.youtube.com/watch?v=lZ_DyimkS54 - Jezz Bezos
-* https://freesound.org/people/LudwigMueller/sounds/459164/ - LudwigMeuller
-* https://freesound.org/people/gpag1/sounds/388822/ - gpag1
-* https://freesound.org/people/SilverIllusionist/sounds/411172/ - SilverIllusionist
 
