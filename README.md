@@ -150,7 +150,7 @@ Setting the Chart.js legend in a different html div.
 Finding duplicate documents in MongoDB
 * https://www.compose.com/articles/finding-duplicate-documents-in-mongodb/
 
-Making rnadom colours generate for data tables
+Making random colours generate for data tables
 * https://tinyurl.com/so8y7dt
 
 Securing personal credentials using the dontenv() function
