@@ -1,5 +1,5 @@
 
-<img src = "https://raw.githubusercontent.com/deganoth/warehouse_manager/static/images/readme_logo.png">
+<img src = "https://raw.githubusercontent.com/deganoth/warehouse_manager/master/static/images/readme_logo.png" target= "_blank" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
 # Warehouse Manger - A cross platform stock managment system.
 
