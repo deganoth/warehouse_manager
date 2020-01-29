@@ -107,35 +107,58 @@ Unknown property ‘-moz-osx-font-smoothing’.  Declaration dropped. icon:22:27
 As can be seen, these relate specifically to Firefox not supporting certain css selectors and functions. On all other popular browsers, no console errors occur. Browsers include Opera, Chrome, Microsoft Edge and Safari
 
 ## Deployment
-I made use of GitHub to host the project files. To contribute to or clone for learning purposes, git provides an option as the top right of the master repository. Heroku is used for live testing online. A link to the Heroku app is linked above.
-To test locally, Python 3.8 must be installed on your device. This allows running of the app.py function. Also, the file structure is essential for Flask to work correctly, as it requires folders such as "static" for images and CSS files, and "templates" for html files. Once created, making use of a text editor such as Sublime, or Atom to modify the files in the JS folder will change elements in the game.
-The local host registers "index.html" as the main project web page, and loads it upon selecting your newly created sales-hemorrhage virtual host. Just refresh the page to see new changes. All links below detail problems and solutions found, including using WAMP server with Phaser 3.
+I made use of GitHub to host the project files. To contribute to or clone for learning purposes, git provides an option as the top right of the master repository. Heroku is used for live testing online. 
+A link to the Heroku app is linked above.
 
-How to make a new project in WAMP - https://www.development-tutorial.com/create-new-project-wampserver/
+Next, in the command window, install flask, dnspython and flask_pymongo using the command "sudo pip3 install" followed by each library name. Do it once per name.
+
+To test locally, Python 3.8 must be installed on your device. This allows running of the app.py function. 
+To allow python to be accessed form anywhere on your device, and in the case of Windows use cmd.exe, a tickbox in the python 3.8.1 installer stating "Add Python 3.8 to PATH" must be ticked. This adds Python functions to the current Windows session and can be executed using the cmd.exe. Once the flask app is created, simply run "python app.py". A local link will appear in the cmd window.
+
+Next, the folder containing your project must be setup as a Git repository. upon opening cmd.exe, navigate to your desired drive and/or folder using the cd commands ,then enter the command "git init". This sets the lcoation as a git repository. 
+
+A MongoDB database must be created for proper use of this app. In the app.py file, or Flask app, a link "[URI]" is created via the mongoDB database and Flask. This string is available in the mongoDB dashboard under the "connect" button. A string is created containing database information. It is recommended to set this string as an environment variable for deployment to github, for security purposes. This can be done using the "dontenv" python library. For heroku, it must remain in place.
+
+Next the Heroku Command Line Interface (CLI) must be installed. This can be downloaded form the heroku website for Windows users. To login via cmd.exe, use "heroku login --interactive". This avoids the need for  abrowser window to open, and allows a login from the terminal
+
+A heroku app must be created on the heroku website. Once created, details on how to connect and push updates to heroku are in the "deploy" tab in the app dashboard. In the settings tab, selected the "Reveal Configs" button to add a PORT and IP key name and value. for PORT, use "5000", for IP use 0.0.0.0. 
+
+After this, navigate to the folder in which the project should be held in. Create a file called "app.py". The app must contain a line importing os "import os", importing flask "from flask import Flask" followed by an app instatiation "app = Flask(__name__)". For testing purposes, a single app_route can be used that returns a string "@app.route("/")". The roward slash indicates the root of the app. Then a function with some text returned "def hello():". Below this on a new indented line, "return "Hello". Finally, settting up the IP address and PORT number tells the system wehre to run the app "if __name__ = '__main__":" and on a new line "app.run(host=os.environ.get('IP'), port=os.environ.get('PORT'), debug=True)". Leaving debug to true for testing is important. The PORT and IP values are set above in the herok app.
+
+For all of this to work on Heroku, a requirements.txt file and Procfile must be created and pushed to heroku. For requirements, in the command window type "pip3 freeze --local > requirements.txt". This gets all the local libraries in use for running the app, and pushes them to heroku. For the Profcile, run the command "echo: web: python app.py > Procfile". It is important to have an uppercase P and no extension for heroku to access it. This file tells heroku what platform the app is designed to run on.
+
+Finally, to setup what heroku calls "dynos", run the command "heroku ps:scale web=1". The dyno system runs the heroku app in a container. It's a self contained unit with it's own infrastructure. 
+
 ## Solutions found
 
 ### Tutorials
-Breakout style game
-* https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser
+Using Jinja templating in javascript.
+* https://www.patricksoftwareblog.com/creating-charts-with-chart-js-in-a-flask-application/
 
-The basics
-* https://www.lesscake.com/phaser-game-tutorial
+Getting a distint word form a string in MongoDB
+* https://www.tutorialspoint.com/get-distinct-first-word-from-a-string-with-mongodb
 
-Using matter.js physics engine
-* https://itnext.io/modular-game-worlds-in-phaser-3-tilemaps-4-meet-matter-js-abf4dfa65ca1
+Creating a html based search bar for searching through MongoDB using Flask.
+* https://tinyurl.com/rd5ynmj
 
-An artists perspective
-* https://medium.com/@jerra.haynes/a-real-persons-guide-to-phaser-3-or-how-i-learned-to-stop-worrying-and-love-the-gun-part-1-9cc6361f377c
+Setting the Chart.js legend in a different html div.
+* https://demo.themekita.com/ready-pro/livepreview/documentation/plugins/chart.html
+* https://jsfiddle.net/6muqvwxL/4/
+* https://tinyurl.com/scbtn8v
+* https://codepen.io/michiel-huiskens/pen/RRaRRv
 
-How to use Phaser
-* http://phaser.io/tutorials/getting-started-phaser3/
+Finding duplicate documents in MongoDB
+* https://www.compose.com/articles/finding-duplicate-documents-in-mongodb/
 
-Make a platformer
-* http://phaser.io/tutorials/making-your-first-phaser-3-game/
+Making rnadom colours generate for data tables
+* https://tinyurl.com/so8y7dt
+
+Securing personal credentials using the dontenv() function
+* https://preslav.me/2019/01/09/dotenv-files-python/
 
 Classy Space Shooter
 * https://www.youtube.com/watch?v=jVlNZgX5fV8
-* https://www.youtube.com/watch?v=U0K0YTifb1w
+* https://www.youtube.com/watch?v=U0K0YTifb1w	
 * https://www.youtube.com/watch?v=cuSQnbZloFc
 * https://www.youtube.com/watch?v=KQ2FhPKBOHI
 * https://www.youtube.com/watch?v=qs5xmT6Upsc
