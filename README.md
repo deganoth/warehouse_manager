@@ -147,6 +147,9 @@ Setting the Chart.js legend in a different html div.
 * https://tinyurl.com/scbtn8v
 * https://codepen.io/michiel-huiskens/pen/RRaRRv
 
+Sorting Tables
+* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table_desc
+
 Finding duplicate documents in MongoDB
 * https://www.compose.com/articles/finding-duplicate-documents-in-mongodb/
 
@@ -156,111 +159,14 @@ Making random colours generate for data tables
 Securing personal credentials using the dontenv() function
 * https://preslav.me/2019/01/09/dotenv-files-python/
 
-Classy Space Shooter
-* https://www.youtube.com/watch?v=jVlNZgX5fV8
-* https://www.youtube.com/watch?v=U0K0YTifb1w	
-* https://www.youtube.com/watch?v=cuSQnbZloFc
-* https://www.youtube.com/watch?v=KQ2FhPKBOHI
-* https://www.youtube.com/watch?v=qs5xmT6Upsc
-
 ### Ideas
 
-Circular game world
-* https://www.emanueleferonato.com/2018/09/10/html5-prototype-of-a-circular-endless-runner-featuring-double-jump-built-with-phaser-adding-particle-trails-explosions-and-camera-effects/
+Connecting Google Sheets with MongoDB
+* https://www.mongodb.com/blog/post/stitching-sheets-using-mongodb-stitch-to-create-an-api-for-data-in-google-sheets
 
-Space shooter
-* https://yorkcs.com/2019/02/08/build-a-space-shooter-with-phaser-3-5/
+App theme basis
+* https://themes.materializecss.com/pages/admin-dashboard	
 
-Space shooter 2
-* https://gamedevacademy.org/creating-mobile-games-with-phaser-3-and-cordova/
-
-Night & day 
-* https://www.joshmorony.com/how-to-create-a-day-night-cycle-in-phaser/
-
-Following
-* http://www.html5gamedevs.com/topic/38089-help-understanding-the-follower-object/
-
-Rotating Object around Player
-* http://www.html5gamedevs.com/topic/39497-rotate-game-objects-around-a-moving-object/
-
-Matter.js
-* https://github.com/mikewesthad/phaser-matter-collision-plugin#as-a-script
-
-### Problems
-Save and load games
-* https://www.dynetisgames.com/2018/10/28/how-save-load-player-progress-localstorage/
-
-Camera follow
-* https://gamedevacademy.org/how-to-make-a-mario-style-platformer-with-phaser-3/
-
-Scale to screen width
-* https://www.joshmorony.com/how-to-scale-a-game-for-all-device-sizes-in-phaser/
-
-Window scaling
-* https://phaser.io/phaser3/devlog/136
-
-Mobile controls
-* https://swemyss.me/blog/phaser-3-mobile-controls
-
-Focus window
-* https://www.emanueleferonato.com/2019/01/09/html5-endless-runner-built-with-phaser-and-arcade-physics-step-4-adding-a-scrolling-parallax-background/
-
-Mobile adaption
-* http://www.lessmilk.com/tutorial/flappy-bird-phaser-3
-
-Resize game window	
-* http://www.html5gamedevs.com/topic/40267-scaling-the-game-to-fit-inner-window/
-
-Resizing part 2
-* https://phaser.discourse.group/t/game-scaling-resizing-example-v3/1555
-
-Sprite Scaling
-* https://phasergames.com/scaling-in-phaser-3/
-
-On Screen Controls
-* https://github.com/photonstorm/phaser-examples/blob/master/examples/input/virtual gamecontroller.js
-
-Alternate Keys for movement
-* http://www.html5gamedevs.com/topic/40607-how-to-replace-arrow-keys-with-wasd-movement/
-
-Mobile controls
-* http://www.html5gamedevs.com/topic/38496-how-make-virtual-button-in-phaser-3/
-
-Offline package building
-* https://gamedevacademy.org/phaser-progressive-web-apps-tutorial/
-
-Using phaser 3 scale manager
-* https://stackoverflow.com/questions/51518818/how-to-make-canvas-responsive-using-phaser-3
-
-Group scaling
-* https://labs.phaser.io/edit.html?src=src/game objects\group\set scale.js
-
-Pick random sound from range
-* http://www.html5gamedevs.com/topic/37506-pick-random-element/
-
-Group physics
-* https://labs.phaser.io/edit.html?src=src/physics/arcade/group set velocity y.js&v=3.19.0
-
-Health bars
-* https://labs.phaser.io/edit.html?src=src/game objects/graphics/health bars demo.js&v=3.19.0
-
-Tween scaling
-* https://phaser.io/examples/v3/view/game-objects/bitmaptext/static/width-and-height#
-
-Z index
-* http://labs.phaser.io/edit.html?src=src\depth sorting\z index.js
-
-Make a new project in WAMP
-* https://www.development-tutorial.com/create-new-project-wampserver/
-
-Hitbox size
-* https://phaser.discourse.group/t/how-to-alter-sprite-hitbox-in-sprite-animation/819
-
-Bitmaptext making
-* https://www.joshmorony.com/adding-custom-fonts-to-your-phaser-game/
-
-Font load open type
-* https://labs.phaser.io/edit.html?src=src/game objects/text/static/custom webfont.js&v=3.19.0
 
 ## Credits
 

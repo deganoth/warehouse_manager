@@ -21,7 +21,8 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'shop_inventory'
 
 # login credentials. These are hidden in an anvironment variable to be created per use of this project.
-app.config["MONGO_URI"] = 'mongodb+srv://root:Ornagy13@myfirstcluster-vsdxp.mongodb.net/shop_inventory?retryWrites=true&w=majority'
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
+#	'mongodb+srv://root:Ornagy13@myfirstcluster-vsdxp.mongodb.net/shop_inventory?retryWrites=true&w=majority'
 
 # instanciate the pymongo app for use.
 mongo = PyMongo(app)
