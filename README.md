@@ -4,7 +4,7 @@
 # Warehouse Manager - A cross platform stock management system.
 
 ## Link to the app hosted on Heroku.
-https://mewsik-shop-inventory.herokuapp.com/
+* https://mewsik-shop-inventory.herokuapp.com/
 
 ## What is this?
 
@@ -14,8 +14,8 @@ This is a stock management system showcasing the C.R.U.D functionality of MongoD
 
 Designed for use across multiple platforms, the app is primarily designed for tablet use, however It displays well on both desktop and mobile. A familiar dashboard style layout is used to provide quick statistics about current inventory. With interactive charts using Chart.js, the user can compare stock levels within categories. With a link in the navbar logo to return to the dashboard, along with the respective links in both products and categories, app navigation feels natural. A burger icon with a pop out menu in the top left corner is always available should the user require it. A familiar look is seen throughout thanks to the Materialize style framework. Similar to bootstrap, it user classnames to display using the flexbox feature available in most modern browsers. Links to both Chart.js and Materialize are below.
 
-https://www.chartjs.org/
-https://materializecss.com/
+* https://www.chartjs.org/
+* https://materializecss.com/
 
 ### Design/ Functionality
 
