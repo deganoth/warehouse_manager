@@ -122,7 +122,7 @@ def edit_product(product_id):
 		product=the_product,
 		manufacturers=all_manufacturers, 
 		categories=all_categories,
-		suppliers=all_suppliers
+		suppliers=all_suppliers,
 		)
 
 # update a product based on it's unique id created by mongoDB. 

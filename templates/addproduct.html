@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- the naming convention for each input field is associated with the mongoDB collection for adding a new product. Required is at the end of each input, this prevents adding a blank product-->
+
 <h4 class="center"><i class="material-icons prefix">create</i>Add Product</h4>
 <div class="row equal-height-grid">	
 	<div class="row">
@@ -22,6 +25,8 @@
 				<div class="row equal-height-grid">
 					<div class="input-field col l4 s12">
 						<i class="material-icons prefix">gavel</i>
+
+<!-- a drop down menu is created containing the full list of manufacuter names, for ease of selection. -->
 						<select id="manufacturer_name" name="manufacturer_name" required>
 							<option value="" disabled selected>Choose Manufacturer</option>
 							{% for brand in manufacturers %}

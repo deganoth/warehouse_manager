@@ -111,24 +111,66 @@ As can be seen, these relate specifically to Firefox not supporting certain css 
 I made use of GitHub to host the project files. To contribute to or clone for learning purposes, git provides an option as the top right of the master repository. Heroku is used for live testing online.
 A link to the Heroku app is linked above.
 
-Next, in the command window, install flask, dnspython and flask_pymongo using the command "sudo pip3 install" followed by each library name. Do it once per name.
+Next, in the command window, install flask, dnspython and flask_pymongo using the command: 
+> sudo pip3 install 
+
+followed by each library name. Do it once per name.
 
 To test locally, Python 3.8 must be installed on your device. This allows running of the app.py function.
-To allow python to be accessed from anywhere on your device, and in the case of Windows use cmd.exe, a tick box in the python 3.8.1 installer stating "Add Python 3.8 to PATH" must be ticked. This adds Python functions to the current Windows session and can be executed using the cmd.exe. Once the flask app is created, simply run "python app.py". A local link will appear in the cmd window.
+To allow python to be accessed from anywhere on your device, and in the case of Windows use cmd.exe, a tick box in the python 3.8.1 installer stating: 
+> Add Python 3.8 to PATH
 
-Next, the folder containing your project must be setup as a Git repository. upon opening cmd.exe, navigate to your desired drive and/or folder using the cd commands ,then enter the command "git init". This sets the location as a git repository.
+This must be ticked. This adds Python functions to the current Windows session and can be executed using the cmd.exe. Once the flask app is created, simply run:
+> python app.py 
 
-A MongoDB database must be created for proper use of this app. In the app.py file, or Flask app, a link "[URI]" is created via the mongoDB database and Flask. This string is available in the mongoDB dashboard under the "connect" button. A string is created containing database information. It is recommended to set this string as an environment variable for deployment to github, for security purposes. This can be done using the "dotenv" python library. For heroku, it must remain in place.
+A local link will appear in the cmd window composed of your local IP and chosen PORT number.
 
-Next the Heroku Command Line Interface (CLI) must be installed. This can be downloaded form the heroku website for Windows users. To login via cmd.exe, use "heroku login --interactive". This avoids the need for  a browser window to open, and allows a login from the terminal
+Next, the folder containing your project must be setup as a Git repository. upon opening cmd.exe, navigate to your desired drive and/or folder using the cd commands ,then enter the command:
+> git init
+
+This sets the location as a git repository.
+
+A MongoDB database must be created for proper use of this app. In the app.py file, a link "[URI]" is created via the mongoDB database and Flask. This string is available in the mongoDB dashboard under the "connect" button. A string is created containing database information. Here is an example:
+> mongodb+srv://username:<password>@clustername-vsdxp.mongodb.net/test?retryWrites=true&w=majority
+
+It is recommended to set this string as an environment variable for deployment to github, for security purposes. This can be done using the "dotenv" python library. For heroku, it must remain in place.
 
 A heroku app must be created on the heroku website. Once created, details on how to connect and push updates to heroku are in the "deploy" tab in the app dashboard. In the settings tab, selected the "Reveal Configs" button to add a PORT and IP key name and value. for PORT, use "5000", for IP use 0.0.0.0.
 
-After this, navigate to the folder in which the project should be held in. Create a file called "app.py". The app must contain a line importing os "import os", importing flask "from flask import Flask" followed by an app instantiation "app = Flask(__name__)". For testing purposes, a single app_route can be used that returns a string "@app.route("/")". The forward slash indicates the root of the app. Then a function with some text returned "def hello():". Below this on a new indented line, "return "Hello". Finally, setting up the IP address and PORT number tells the system where to run the app "if __name__ = '__main__":" and on a new line "app.run(host=os.environ.get('IP'), port=os.environ.get('PORT'), debug=True)". Leaving debug to true for testing is important. The PORT and IP values are set above in the heroku app.
+Next the Heroku Command Line Interface (CLI) must be installed. This can be downloaded form the heroku website for Windows users. To login via cmd.exe, use:
+> "heroku login --interactive" 
 
-For all of this to work on Heroku, a requirements.txt file and Procfile must be created and pushed to heroku. For requirements, in the command window type "pip3 freeze --local > requirements.txt". This gets all the local libraries in use for running the app, and pushes them to heroku. For the Procfile, run the command "echo: web: python app.py > Procfile". It is important to have an uppercase P and no extension for heroku to access it. This file tells heroku what platform the app is designed to run on.
+This avoids the need for a browser window to open, and allows a login from the terminal.
 
-Finally, to setup what heroku calls "dynos", run the command "heroku ps:scale web=1". The dyno system runs the heroku app in a container. It's a self contained unit with it's own infrastructure.
+After this, navigate to the folder in which the project should be held in. In the "app.py" file and add the following lines: importing os "import os", importing flask "from flask import Flask" followed by an app instantiation "app = Flask(__name__)". For testing purposes, a single app_route can be used that returns a string "@app.route("/")". The forward slash indicates the root of the app. Then a function with some text returned "def hello():". Below this on a new indented line, "return "Hello". Finally, setting up the IP address and PORT number tells the system where to run the app "if __name__ = '__main__":" and on a new line "app.run(host=os.environ.get('IP'), port=os.environ.get('PORT'), debug=True)". Leaving debug to true for testing is important. The PORT and IP values are set above in the heroku app.
+> import os
+
+> from flask import Flask
+
+> app = Flask(\_\_name\_\_)
+
+> @app.route('/')
+
+> def hello():
+
+> return "Hello"
+    
+> if \_\_name\_\_='\_\_main\_\_':
+
+> app.run(host=os.environ.get('IP'), port=os.environ.get('PORT'), debug=True)
+
+For all of this to work on Heroku, a requirements.txt file and Procfile must be created and pushed to heroku. For requirements, in the command window type:
+> pip3 freeze --local > requirements.txt 
+
+This gets all the local libraries in use for running the app, and pushes them to heroku. For the Procfile, run the command:
+> echo: web: python app.py > Procfile 
+
+It is important to have an uppercase P and no extension for heroku to access it. This file tells heroku what platform the app is designed to run on.
+
+Finally, to setup what heroku calls "dynos", run the command: 
+> heroku ps:scale web=1 
+
+The dyno system runs the heroku app in a container. It's a self contained unit with it's own infrastructure.
 
 ## Solutions found
 

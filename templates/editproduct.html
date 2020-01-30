@@ -1,6 +1,7 @@
-
 {% extends 'base.html' %}
 {% block content %}
+
+<!-- this form requests access to a single product in the collection for editing. Fields are populaged with existing data by cross checking the field name with the loop iteration name -->
 <h4 class="center"><i class="material-icons prefix">create</i>Edit Product</h4>
 <div class="row equal-height-grid">	
 	<div class="row">
@@ -90,12 +91,15 @@
 					<div class="input-field switch col l6 s12" id="bottom-switch">
 						<i class="material-icons prefix">contact_support</i>
 						<label>
+
+<!-- Procuct can not be created without an active status -->
 							{% if product.product_status %}
 							<input id="product_status" name="product_status" type="checkbox" value="Active" checked required>
 							{% else %}
 							<input id="product_status" name="product_status" type="checkbox" value="Inactive" required>
 							{% endif %}
-							<span class="lever"></span><span>Active</span>
+							<span class="lever"></span>
+							Active
 						</label>
 					</div>
 				</div>
@@ -110,6 +114,8 @@
 			</div>							
 		</form>
 	</div>
+
+<!-- calls the delete function from the app.py file. Removes a dictionary item form mongoDB -->
 	<div class="row equal-height-grid" id="button_padding">
 		<form action="{{url_for('delete_product', product_id=product._id)}}" method="POST">
 			<div>
@@ -120,5 +126,7 @@
 		</form>
 	</div>
 </div>
+
+<!-- jQuery must be called on this page for the fields to be filled with data stored in mongoDB -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 {% endblock %}

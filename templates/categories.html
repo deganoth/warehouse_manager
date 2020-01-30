@@ -22,11 +22,12 @@
 	<div class="col s12">
 		<div class="card">
 			<ul>
+
+<!-- displays categories in a defined style per result -->
 				{% for category in categories %}
 				<li>
 					<div class="collapsible-header">
 						<a href="{{url_for('edit_category', category_id=category._id)}}" class="btn-floating waves-effect waves-light amber"><i class="category-edit material-icons">edit</i></a>
-
 						<div class="category-header"><h6>{{category.category_name}}</h6></div>	
 					</div>
 					<div class="collapsible-body"><span><a class="btn-floating btn-medium waves-effect waves-light amber" ><i class="material-icons right">edit</i></a></span></div>

@@ -1,3 +1,5 @@
+/* some additions to the default styling of Materialize. */
+
 /* table and span item styling. all span items are functional on this webapp */
 th>span{
 	display:none;
